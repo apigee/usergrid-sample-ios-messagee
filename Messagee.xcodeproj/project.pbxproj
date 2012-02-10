@@ -1,0 +1,515 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		94328D3914E563A100153B08 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94328D3814E563A100153B08 /* UIKit.framework */; };
+		94328D3B14E563A200153B08 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94328D3A14E563A100153B08 /* Foundation.framework */; };
+		94328D3D14E563A200153B08 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94328D3C14E563A200153B08 /* CoreGraphics.framework */; };
+		94328D4314E563A200153B08 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 94328D4114E563A200153B08 /* InfoPlist.strings */; };
+		94328D4514E563A200153B08 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 94328D4414E563A200153B08 /* main.m */; };
+		94328D4914E563A200153B08 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94328D4814E563A200153B08 /* AppDelegate.m */; };
+		94328D4C14E563A200153B08 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94328D4A14E563A200153B08 /* MainStoryboard.storyboard */; };
+		94328D4F14E563A200153B08 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94328D4E14E563A200153B08 /* MessageViewController.m */; };
+		94328D5614E563A200153B08 /* PeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94328D5514E563A200153B08 /* PeopleViewController.m */; };
+		94F5F03314E5659100E1ED55 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F5F02914E5650000E1ED55 /* libRestKit.a */; };
+		94F5F03A14E565E600E1ED55 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F5F03414E565E600E1ED55 /* CFNetwork.framework */; };
+		94F5F03B14E565E600E1ED55 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F5F03514E565E600E1ED55 /* CoreData.framework */; };
+		94F5F03C14E565E600E1ED55 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F5F03614E565E600E1ED55 /* libxml2.dylib */; };
+		94F5F03D14E565E600E1ED55 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F5F03714E565E600E1ED55 /* MobileCoreServices.framework */; };
+		94F5F03E14E565E600E1ED55 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F5F03814E565E600E1ED55 /* Security.framework */; };
+		94F5F03F14E565E600E1ED55 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F5F03914E565E600E1ED55 /* SystemConfiguration.framework */; };
+		94F5F04214E5676C00E1ED55 /* NewMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F5F04114E5676C00E1ED55 /* NewMessageViewController.m */; };
+		94F5F04514E5678A00E1ED55 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F5F04414E5678A00E1ED55 /* LoginViewController.m */; };
+		94F5F04814E5686100E1ED55 /* UGClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F5F04714E5686000E1ED55 /* UGClient.m */; };
+		94F5F05B14E56D8300E1ED55 /* addPeople@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F04C14E56D8200E1ED55 /* addPeople@2x.png */; };
+		94F5F05C14E56D8300E1ED55 /* Background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F04D14E56D8200E1ED55 /* Background@2x.png */; };
+		94F5F05D14E56D8300E1ED55 /* friend.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F04E14E56D8200E1ED55 /* friend.png */; };
+		94F5F05E14E56D8300E1ED55 /* friend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F04F14E56D8200E1ED55 /* friend@2x.png */; };
+		94F5F05F14E56D8300E1ED55 /* Icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F05014E56D8200E1ED55 /* Icon1.png */; };
+		94F5F06014E56D8300E1ED55 /* Icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F05114E56D8200E1ED55 /* Icon2.png */; };
+		94F5F06114E56D8300E1ED55 /* leftButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F05214E56D8200E1ED55 /* leftButton@2x.png */; };
+		94F5F06214E56D8300E1ED55 /* login@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F05314E56D8200E1ED55 /* login@2x.png */; };
+		94F5F06314E56D8300E1ED55 /* messagesBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F05414E56D8200E1ED55 /* messagesBoard.png */; };
+		94F5F06414E56D8300E1ED55 /* messagesBoard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F05514E56D8200E1ED55 /* messagesBoard@2x.png */; };
+		94F5F06514E56D8300E1ED55 /* navigationBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F05614E56D8200E1ED55 /* navigationBar@2x.png */; };
+		94F5F06614E56D8300E1ED55 /* newMessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F05714E56D8200E1ED55 /* newMessage@2x.png */; };
+		94F5F06714E56D8300E1ED55 /* rightButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F05814E56D8200E1ED55 /* rightButton@2x.png */; };
+		94F5F06814E56D8300E1ED55 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F05914E56D8200E1ED55 /* settings.png */; };
+		94F5F06914E56D8300E1ED55 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F05A14E56D8300E1ED55 /* settings@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		94F5F02814E5650000E1ED55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94F5F01E14E5650000E1ED55 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160D1614564E810060A5C5;
+			remoteInfo = RestKit;
+		};
+		94F5F02A14E5650000E1ED55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94F5F01E14E5650000E1ED55 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160D2614564E820060A5C5;
+			remoteInfo = RestKitTests;
+		};
+		94F5F02C14E5650000E1ED55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94F5F01E14E5650000E1ED55 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160E62145651060060A5C5;
+			remoteInfo = RestKitFramework;
+		};
+		94F5F02E14E5650000E1ED55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94F5F01E14E5650000E1ED55 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160E78145651060060A5C5;
+			remoteInfo = RestKitFrameworkTests;
+		};
+		94F5F03114E5657400E1ED55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94F5F01E14E5650000E1ED55 /* RestKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 25160D1514564E810060A5C5;
+			remoteInfo = RestKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		94328D3414E563A100153B08 /* Messagee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messagee.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		94328D3814E563A100153B08 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		94328D3A14E563A100153B08 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		94328D3C14E563A200153B08 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		94328D4014E563A200153B08 /* Messagee-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Messagee-Info.plist"; sourceTree = "<group>"; };
+		94328D4214E563A200153B08 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		94328D4414E563A200153B08 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		94328D4614E563A200153B08 /* Messagee-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Messagee-Prefix.pch"; sourceTree = "<group>"; };
+		94328D4714E563A200153B08 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		94328D4814E563A200153B08 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		94328D4B14E563A200153B08 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		94328D4D14E563A200153B08 /* MessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
+		94328D4E14E563A200153B08 /* MessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
+		94328D5414E563A200153B08 /* PeopleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PeopleViewController.h; sourceTree = "<group>"; };
+		94328D5514E563A200153B08 /* PeopleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeopleViewController.m; sourceTree = "<group>"; };
+		94F5F01E14E5650000E1ED55 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
+		94F5F03414E565E600E1ED55 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		94F5F03514E565E600E1ED55 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		94F5F03614E565E600E1ED55 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		94F5F03714E565E600E1ED55 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		94F5F03814E565E600E1ED55 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		94F5F03914E565E600E1ED55 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		94F5F04014E5676C00E1ED55 /* NewMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewMessageViewController.h; sourceTree = "<group>"; };
+		94F5F04114E5676C00E1ED55 /* NewMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMessageViewController.m; sourceTree = "<group>"; };
+		94F5F04314E5678A00E1ED55 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		94F5F04414E5678A00E1ED55 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		94F5F04614E5686000E1ED55 /* UGClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UGClient.h; path = Usergrid/UGClient.h; sourceTree = "<group>"; };
+		94F5F04714E5686000E1ED55 /* UGClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UGClient.m; path = Usergrid/UGClient.m; sourceTree = "<group>"; };
+		94F5F04C14E56D8200E1ED55 /* addPeople@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addPeople@2x.png"; sourceTree = "<group>"; };
+		94F5F04D14E56D8200E1ED55 /* Background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Background@2x.png"; sourceTree = "<group>"; };
+		94F5F04E14E56D8200E1ED55 /* friend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friend.png; sourceTree = "<group>"; };
+		94F5F04F14E56D8200E1ED55 /* friend@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friend@2x.png"; sourceTree = "<group>"; };
+		94F5F05014E56D8200E1ED55 /* Icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon1.png; sourceTree = "<group>"; };
+		94F5F05114E56D8200E1ED55 /* Icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon2.png; sourceTree = "<group>"; };
+		94F5F05214E56D8200E1ED55 /* leftButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leftButton@2x.png"; sourceTree = "<group>"; };
+		94F5F05314E56D8200E1ED55 /* login@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login@2x.png"; sourceTree = "<group>"; };
+		94F5F05414E56D8200E1ED55 /* messagesBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = messagesBoard.png; sourceTree = "<group>"; };
+		94F5F05514E56D8200E1ED55 /* messagesBoard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messagesBoard@2x.png"; sourceTree = "<group>"; };
+		94F5F05614E56D8200E1ED55 /* navigationBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigationBar@2x.png"; sourceTree = "<group>"; };
+		94F5F05714E56D8200E1ED55 /* newMessage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newMessage@2x.png"; sourceTree = "<group>"; };
+		94F5F05814E56D8200E1ED55 /* rightButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rightButton@2x.png"; sourceTree = "<group>"; };
+		94F5F05914E56D8200E1ED55 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		94F5F05A14E56D8300E1ED55 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		94328D3114E563A100153B08 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94F5F03A14E565E600E1ED55 /* CFNetwork.framework in Frameworks */,
+				94F5F03B14E565E600E1ED55 /* CoreData.framework in Frameworks */,
+				94F5F03C14E565E600E1ED55 /* libxml2.dylib in Frameworks */,
+				94F5F03D14E565E600E1ED55 /* MobileCoreServices.framework in Frameworks */,
+				94F5F03E14E565E600E1ED55 /* Security.framework in Frameworks */,
+				94F5F03F14E565E600E1ED55 /* SystemConfiguration.framework in Frameworks */,
+				94F5F03314E5659100E1ED55 /* libRestKit.a in Frameworks */,
+				94328D3914E563A100153B08 /* UIKit.framework in Frameworks */,
+				94328D3B14E563A200153B08 /* Foundation.framework in Frameworks */,
+				94328D3D14E563A200153B08 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		94328D2914E563A100153B08 = {
+			isa = PBXGroup;
+			children = (
+				94F5F01E14E5650000E1ED55 /* RestKit.xcodeproj */,
+				94328D3E14E563A200153B08 /* Messagee */,
+				94328D3714E563A100153B08 /* Frameworks */,
+				94328D3514E563A100153B08 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		94328D3514E563A100153B08 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				94328D3414E563A100153B08 /* Messagee.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		94328D3714E563A100153B08 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				94F5F03414E565E600E1ED55 /* CFNetwork.framework */,
+				94F5F03514E565E600E1ED55 /* CoreData.framework */,
+				94F5F03614E565E600E1ED55 /* libxml2.dylib */,
+				94F5F03714E565E600E1ED55 /* MobileCoreServices.framework */,
+				94F5F03814E565E600E1ED55 /* Security.framework */,
+				94F5F03914E565E600E1ED55 /* SystemConfiguration.framework */,
+				94328D3814E563A100153B08 /* UIKit.framework */,
+				94328D3A14E563A100153B08 /* Foundation.framework */,
+				94328D3C14E563A200153B08 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		94328D3E14E563A200153B08 /* Messagee */ = {
+			isa = PBXGroup;
+			children = (
+				94328D4714E563A200153B08 /* AppDelegate.h */,
+				94328D4814E563A200153B08 /* AppDelegate.m */,
+				94328D4A14E563A200153B08 /* MainStoryboard.storyboard */,
+				94328D4D14E563A200153B08 /* MessageViewController.h */,
+				94328D4E14E563A200153B08 /* MessageViewController.m */,
+				94328D5414E563A200153B08 /* PeopleViewController.h */,
+				94328D5514E563A200153B08 /* PeopleViewController.m */,
+				94F5F04014E5676C00E1ED55 /* NewMessageViewController.h */,
+				94F5F04114E5676C00E1ED55 /* NewMessageViewController.m */,
+				94F5F04314E5678A00E1ED55 /* LoginViewController.h */,
+				94F5F04414E5678A00E1ED55 /* LoginViewController.m */,
+				94F5F04914E5686D00E1ED55 /* Usergrid */,
+				94F5F06A14E56D9F00E1ED55 /* Images */,
+				94328D3F14E563A200153B08 /* Supporting Files */,
+			);
+			path = Messagee;
+			sourceTree = "<group>";
+		};
+		94328D3F14E563A200153B08 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				94328D4014E563A200153B08 /* Messagee-Info.plist */,
+				94328D4114E563A200153B08 /* InfoPlist.strings */,
+				94328D4414E563A200153B08 /* main.m */,
+				94328D4614E563A200153B08 /* Messagee-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		94F5F01F14E5650000E1ED55 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				94F5F02914E5650000E1ED55 /* libRestKit.a */,
+				94F5F02B14E5650000E1ED55 /* RestKitTests.octest */,
+				94F5F02D14E5650000E1ED55 /* RestKit.framework */,
+				94F5F02F14E5650000E1ED55 /* RestKitFrameworkTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		94F5F04914E5686D00E1ED55 /* Usergrid */ = {
+			isa = PBXGroup;
+			children = (
+				94F5F04614E5686000E1ED55 /* UGClient.h */,
+				94F5F04714E5686000E1ED55 /* UGClient.m */,
+			);
+			name = Usergrid;
+			sourceTree = "<group>";
+		};
+		94F5F06A14E56D9F00E1ED55 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				94F5F04C14E56D8200E1ED55 /* addPeople@2x.png */,
+				94F5F04D14E56D8200E1ED55 /* Background@2x.png */,
+				94F5F04E14E56D8200E1ED55 /* friend.png */,
+				94F5F04F14E56D8200E1ED55 /* friend@2x.png */,
+				94F5F05014E56D8200E1ED55 /* Icon1.png */,
+				94F5F05114E56D8200E1ED55 /* Icon2.png */,
+				94F5F05214E56D8200E1ED55 /* leftButton@2x.png */,
+				94F5F05314E56D8200E1ED55 /* login@2x.png */,
+				94F5F05414E56D8200E1ED55 /* messagesBoard.png */,
+				94F5F05514E56D8200E1ED55 /* messagesBoard@2x.png */,
+				94F5F05614E56D8200E1ED55 /* navigationBar@2x.png */,
+				94F5F05714E56D8200E1ED55 /* newMessage@2x.png */,
+				94F5F05814E56D8200E1ED55 /* rightButton@2x.png */,
+				94F5F05914E56D8200E1ED55 /* settings.png */,
+				94F5F05A14E56D8300E1ED55 /* settings@2x.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		94328D3314E563A100153B08 /* Messagee */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 94328D5D14E563A200153B08 /* Build configuration list for PBXNativeTarget "Messagee" */;
+			buildPhases = (
+				94328D3014E563A100153B08 /* Sources */,
+				94328D3114E563A100153B08 /* Frameworks */,
+				94328D3214E563A100153B08 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				94F5F03214E5657400E1ED55 /* PBXTargetDependency */,
+			);
+			name = Messagee;
+			productName = Messagee;
+			productReference = 94328D3414E563A100153B08 /* Messagee.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		94328D2B14E563A100153B08 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 94328D2E14E563A100153B08 /* Build configuration list for PBXProject "Messagee" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 94328D2914E563A100153B08;
+			productRefGroup = 94328D3514E563A100153B08 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 94F5F01F14E5650000E1ED55 /* Products */;
+					ProjectRef = 94F5F01E14E5650000E1ED55 /* RestKit.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				94328D3314E563A100153B08 /* Messagee */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		94F5F02914E5650000E1ED55 /* libRestKit.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRestKit.a;
+			remoteRef = 94F5F02814E5650000E1ED55 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		94F5F02B14E5650000E1ED55 /* RestKitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RestKitTests.octest;
+			remoteRef = 94F5F02A14E5650000E1ED55 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		94F5F02D14E5650000E1ED55 /* RestKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RestKit.framework;
+			remoteRef = 94F5F02C14E5650000E1ED55 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		94F5F02F14E5650000E1ED55 /* RestKitFrameworkTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RestKitFrameworkTests.octest;
+			remoteRef = 94F5F02E14E5650000E1ED55 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		94328D3214E563A100153B08 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94328D4314E563A200153B08 /* InfoPlist.strings in Resources */,
+				94328D4C14E563A200153B08 /* MainStoryboard.storyboard in Resources */,
+				94F5F05B14E56D8300E1ED55 /* addPeople@2x.png in Resources */,
+				94F5F05C14E56D8300E1ED55 /* Background@2x.png in Resources */,
+				94F5F05D14E56D8300E1ED55 /* friend.png in Resources */,
+				94F5F05E14E56D8300E1ED55 /* friend@2x.png in Resources */,
+				94F5F05F14E56D8300E1ED55 /* Icon1.png in Resources */,
+				94F5F06014E56D8300E1ED55 /* Icon2.png in Resources */,
+				94F5F06114E56D8300E1ED55 /* leftButton@2x.png in Resources */,
+				94F5F06214E56D8300E1ED55 /* login@2x.png in Resources */,
+				94F5F06314E56D8300E1ED55 /* messagesBoard.png in Resources */,
+				94F5F06414E56D8300E1ED55 /* messagesBoard@2x.png in Resources */,
+				94F5F06514E56D8300E1ED55 /* navigationBar@2x.png in Resources */,
+				94F5F06614E56D8300E1ED55 /* newMessage@2x.png in Resources */,
+				94F5F06714E56D8300E1ED55 /* rightButton@2x.png in Resources */,
+				94F5F06814E56D8300E1ED55 /* settings.png in Resources */,
+				94F5F06914E56D8300E1ED55 /* settings@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		94328D3014E563A100153B08 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94328D4514E563A200153B08 /* main.m in Sources */,
+				94328D4914E563A200153B08 /* AppDelegate.m in Sources */,
+				94328D4F14E563A200153B08 /* MessageViewController.m in Sources */,
+				94328D5614E563A200153B08 /* PeopleViewController.m in Sources */,
+				94F5F04214E5676C00E1ED55 /* NewMessageViewController.m in Sources */,
+				94F5F04514E5678A00E1ED55 /* LoginViewController.m in Sources */,
+				94F5F04814E5686100E1ED55 /* UGClient.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		94F5F03214E5657400E1ED55 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RestKit;
+			targetProxy = 94F5F03114E5657400E1ED55 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		94328D4114E563A200153B08 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				94328D4214E563A200153B08 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		94328D4A14E563A200153B08 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				94328D4B14E563A200153B08 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		94328D5B14E563A200153B08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		94328D5C14E563A200153B08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		94328D5E14E563A200153B08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Messagee/Messagee-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SOURCE_ROOT)/RestKit/Build\"";
+				INFOPLIST_FILE = "Messagee/Messagee-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		94328D5F14E563A200153B08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Messagee/Messagee-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SOURCE_ROOT)/RestKit/Build\"";
+				INFOPLIST_FILE = "Messagee/Messagee-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		94328D2E14E563A100153B08 /* Build configuration list for PBXProject "Messagee" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94328D5B14E563A200153B08 /* Debug */,
+				94328D5C14E563A200153B08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		94328D5D14E563A200153B08 /* Build configuration list for PBXNativeTarget "Messagee" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94328D5E14E563A200153B08 /* Debug */,
+				94328D5F14E563A200153B08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 94328D2B14E563A100153B08 /* Project object */;
+}
