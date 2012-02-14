@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <RestKit/RestKit.h>
 
-@interface UGActivitie : NSObject
+@interface UGActivitie : NSObject {  
+    NSString *_content;
+    NSString *_type;
+}  
+
+@property (nonatomic, retain) NSString *content;
+@property (nonatomic, retain) NSString *type;
 
 @end

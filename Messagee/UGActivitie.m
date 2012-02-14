@@ -10,4 +10,7 @@
 
 @implementation UGActivitie
 
+@synthesize content = _content;
+@synthesize type = _type;
+
 @end

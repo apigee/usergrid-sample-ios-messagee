@@ -9,6 +9,7 @@
 #import "ServerViewController.h"
 
 @implementation ServerViewController
+@synthesize serverTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,6 +47,7 @@
 
 - (void)viewDidUnload
 {
+    [self setServerTextField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -56,5 +58,12 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+- (IBAction)changeServerButton:(id)sender {
+    [[UGClient sharedInstance] setUsergridApiUrl:[serverTextField text]];
+    [self dismissModalViewControllerAnimated:YES];
+}
 
+- (IBAction)closeServerButton:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
+}
 @end

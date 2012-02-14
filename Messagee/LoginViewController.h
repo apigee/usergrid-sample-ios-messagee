@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <RestKit/RestKit.h> 
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : UIViewController <RKRequestDelegate> {
+    UITextField *currentTextField;
+    UIButton *_loginButton;
+    BOOL keyboardIsShown;
+}
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 
 @end

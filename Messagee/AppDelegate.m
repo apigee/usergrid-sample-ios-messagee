@@ -15,7 +15,26 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    // Usergrid Settings
+    [[UGClient sharedInstance] setUsergridApiUrl:@"http://apigee-test.usergrid.com"];
+    [[UGClient sharedInstance] setUsergridApp:@"Messagee"];
+    [[UGClient sharedInstance] setUsergridKey:@"b3U6C-K7vkw9EeG0HSIAChxOIg"];
+    [[UGClient sharedInstance] setUsergridSecret:@"b3U6Qxux-D4mO8uaTrSrjpEbikgshvk"];
+    
+    RKClient *client = [RKClient clientWithBaseURL:[[UGClient sharedInstance] usergridApiUrl]];
+    [RKClient setSharedClient:client];
+    
+    // Load the object model via RestKit	
+    RKObjectManager* objectManager = [RKObjectManager objectManagerWithBaseURL:[[UGClient sharedInstance] usergridApiUrl]];
+    
+    RKObjectMapping* userMapping = [RKObjectMapping mappingForClass:[UGActivitie class]];
+    [userMapping mapKeyPath:@"content" toAttribute:@"content"];
+    [userMapping mapKeyPath:@"type" toAttribute:@"type"];
+    
+    [objectManager.mappingProvider setMapping:userMapping forKeyPath:@"entities"];
+    
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navigationBar"] forBarMetrics:UIBarMetricsDefault];
+    
     return YES;
 }
 							

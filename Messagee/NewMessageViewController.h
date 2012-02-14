@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <RestKit/RestKit.h>
+#import <RestKit/RKRequestSerialization.h>
+#import "UGClient.h"
+#import "MessageViewController.h"
 
-@interface NewMessageViewController : UIViewController
+@interface NewMessageViewController : UIViewController <RKRequestDelegate, RKObjectLoaderDelegate> {
+    
+}
+
+@property (weak, nonatomic) IBOutlet UITextView *messageTextField;
 
 @end

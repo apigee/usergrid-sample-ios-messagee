@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UGActivitie.h"
 
-@interface MessageViewController : UIViewController
+@interface MessageViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, RKObjectLoaderDelegate> {
+	UITableView *_tableView;
+	NSArray *_statuses;
+}
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+- (void)loadTimeline;
 
 @end

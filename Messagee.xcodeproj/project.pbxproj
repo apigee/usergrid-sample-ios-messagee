@@ -16,6 +16,16 @@
 		94328D4C14E563A200153B08 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94328D4A14E563A200153B08 /* MainStoryboard.storyboard */; };
 		94328D4F14E563A200153B08 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94328D4E14E563A200153B08 /* MessageViewController.m */; };
 		94328D5614E563A200153B08 /* PeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94328D5514E563A200153B08 /* PeopleViewController.m */; };
+		9448BDA814E9886300689915 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9448BDA714E9886200689915 /* logo@2x.png */; };
+		9448BDAA14E989B300689915 /* register@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9448BDA914E989B300689915 /* register@2x.png */; };
+		9448BDAC14E9909500689915 /* changeServer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9448BDAB14E9909500689915 /* changeServer@2x.png */; };
+		9448BDAE14E9975300689915 /* serverField.png in Resources */ = {isa = PBXBuildFile; fileRef = 9448BDAD14E9975300689915 /* serverField.png */; };
+		9448BDB014E99C2900689915 /* usernameField@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9448BDAF14E99C2900689915 /* usernameField@2x.png */; };
+		9448BDB314EA1EC400689915 /* ServerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9448BDB214EA1EC400689915 /* ServerViewController.m */; };
+		9448BDB614EA1FD300689915 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9448BDB514EA1FD200689915 /* RegisterViewController.m */; };
+		9474287A14E7A1EB00BD402C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9474287914E7A1EB00BD402C /* Default@2x.png */; };
+		947A5D7814E860B200B2F426 /* UGUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 947A5D7714E860B200B2F426 /* UGUser.m */; };
+		947A5D7B14E860D500B2F426 /* UGActivitie.m in Sources */ = {isa = PBXBuildFile; fileRef = 947A5D7A14E860D500B2F426 /* UGActivitie.m */; };
 		94F5F03314E5659100E1ED55 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F5F02914E5650000E1ED55 /* libRestKit.a */; };
 		94F5F03A14E565E600E1ED55 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F5F03414E565E600E1ED55 /* CFNetwork.framework */; };
 		94F5F03B14E565E600E1ED55 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F5F03514E565E600E1ED55 /* CoreData.framework */; };
@@ -25,13 +35,10 @@
 		94F5F03F14E565E600E1ED55 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F5F03914E565E600E1ED55 /* SystemConfiguration.framework */; };
 		94F5F04214E5676C00E1ED55 /* NewMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F5F04114E5676C00E1ED55 /* NewMessageViewController.m */; };
 		94F5F04514E5678A00E1ED55 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F5F04414E5678A00E1ED55 /* LoginViewController.m */; };
-		94F5F04814E5686100E1ED55 /* UGClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F5F04714E5686000E1ED55 /* UGClient.m */; };
 		94F5F05B14E56D8300E1ED55 /* addPeople@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F04C14E56D8200E1ED55 /* addPeople@2x.png */; };
 		94F5F05C14E56D8300E1ED55 /* Background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F04D14E56D8200E1ED55 /* Background@2x.png */; };
 		94F5F05D14E56D8300E1ED55 /* friend.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F04E14E56D8200E1ED55 /* friend.png */; };
 		94F5F05E14E56D8300E1ED55 /* friend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F04F14E56D8200E1ED55 /* friend@2x.png */; };
-		94F5F05F14E56D8300E1ED55 /* Icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F05014E56D8200E1ED55 /* Icon1.png */; };
-		94F5F06014E56D8300E1ED55 /* Icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F05114E56D8200E1ED55 /* Icon2.png */; };
 		94F5F06114E56D8300E1ED55 /* leftButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F05214E56D8200E1ED55 /* leftButton@2x.png */; };
 		94F5F06214E56D8300E1ED55 /* login@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F05314E56D8200E1ED55 /* login@2x.png */; };
 		94F5F06314E56D8300E1ED55 /* messagesBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F05414E56D8200E1ED55 /* messagesBoard.png */; };
@@ -41,6 +48,10 @@
 		94F5F06714E56D8300E1ED55 /* rightButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F05814E56D8200E1ED55 /* rightButton@2x.png */; };
 		94F5F06814E56D8300E1ED55 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F05914E56D8200E1ED55 /* settings.png */; };
 		94F5F06914E56D8300E1ED55 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F05A14E56D8300E1ED55 /* settings@2x.png */; };
+		94F5F08114E573DE00E1ED55 /* UGClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F5F08014E573DE00E1ED55 /* UGClient.m */; };
+		94F5F08F14E57BC700E1ED55 /* loginFields@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F08E14E57BC700E1ED55 /* loginFields@2x.png */; };
+		94F5F0DE14E7622300E1ED55 /* Icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F0DD14E7622300E1ED55 /* Icon1.png */; };
+		94F5F0E014E7623700E1ED55 /* Icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F5F0DF14E7623600E1ED55 /* Icon2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +108,20 @@
 		94328D4E14E563A200153B08 /* MessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		94328D5414E563A200153B08 /* PeopleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PeopleViewController.h; sourceTree = "<group>"; };
 		94328D5514E563A200153B08 /* PeopleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeopleViewController.m; sourceTree = "<group>"; };
+		9448BDA714E9886200689915 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
+		9448BDA914E989B300689915 /* register@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register@2x.png"; sourceTree = "<group>"; };
+		9448BDAB14E9909500689915 /* changeServer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "changeServer@2x.png"; sourceTree = "<group>"; };
+		9448BDAD14E9975300689915 /* serverField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = serverField.png; sourceTree = "<group>"; };
+		9448BDAF14E99C2900689915 /* usernameField@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "usernameField@2x.png"; sourceTree = "<group>"; };
+		9448BDB114EA1EC400689915 /* ServerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerViewController.h; sourceTree = "<group>"; };
+		9448BDB214EA1EC400689915 /* ServerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerViewController.m; sourceTree = "<group>"; };
+		9448BDB414EA1FD200689915 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		9448BDB514EA1FD200689915 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		9474287914E7A1EB00BD402C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		947A5D7614E860B200B2F426 /* UGUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UGUser.h; path = Usergrid/UGUser.h; sourceTree = "<group>"; };
+		947A5D7714E860B200B2F426 /* UGUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UGUser.m; path = Usergrid/UGUser.m; sourceTree = "<group>"; };
+		947A5D7914E860D500B2F426 /* UGActivitie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGActivitie.h; sourceTree = "<group>"; };
+		947A5D7A14E860D500B2F426 /* UGActivitie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGActivitie.m; sourceTree = "<group>"; };
 		94F5F01E14E5650000E1ED55 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		94F5F03414E565E600E1ED55 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		94F5F03514E565E600E1ED55 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -108,14 +133,10 @@
 		94F5F04114E5676C00E1ED55 /* NewMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMessageViewController.m; sourceTree = "<group>"; };
 		94F5F04314E5678A00E1ED55 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		94F5F04414E5678A00E1ED55 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		94F5F04614E5686000E1ED55 /* UGClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UGClient.h; path = Usergrid/UGClient.h; sourceTree = "<group>"; };
-		94F5F04714E5686000E1ED55 /* UGClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UGClient.m; path = Usergrid/UGClient.m; sourceTree = "<group>"; };
 		94F5F04C14E56D8200E1ED55 /* addPeople@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addPeople@2x.png"; sourceTree = "<group>"; };
 		94F5F04D14E56D8200E1ED55 /* Background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Background@2x.png"; sourceTree = "<group>"; };
 		94F5F04E14E56D8200E1ED55 /* friend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friend.png; sourceTree = "<group>"; };
 		94F5F04F14E56D8200E1ED55 /* friend@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friend@2x.png"; sourceTree = "<group>"; };
-		94F5F05014E56D8200E1ED55 /* Icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon1.png; sourceTree = "<group>"; };
-		94F5F05114E56D8200E1ED55 /* Icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon2.png; sourceTree = "<group>"; };
 		94F5F05214E56D8200E1ED55 /* leftButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leftButton@2x.png"; sourceTree = "<group>"; };
 		94F5F05314E56D8200E1ED55 /* login@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login@2x.png"; sourceTree = "<group>"; };
 		94F5F05414E56D8200E1ED55 /* messagesBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = messagesBoard.png; sourceTree = "<group>"; };
@@ -125,6 +146,11 @@
 		94F5F05814E56D8200E1ED55 /* rightButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rightButton@2x.png"; sourceTree = "<group>"; };
 		94F5F05914E56D8200E1ED55 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		94F5F05A14E56D8300E1ED55 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
+		94F5F07F14E573DE00E1ED55 /* UGClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGClient.h; sourceTree = "<group>"; };
+		94F5F08014E573DE00E1ED55 /* UGClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGClient.m; sourceTree = "<group>"; };
+		94F5F08E14E57BC700E1ED55 /* loginFields@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginFields@2x.png"; sourceTree = "<group>"; };
+		94F5F0DD14E7622300E1ED55 /* Icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon1.png; path = ../Icon1.png; sourceTree = "<group>"; };
+		94F5F0DF14E7623600E1ED55 /* Icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon2.png; path = ../Icon2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +222,10 @@
 				94F5F04114E5676C00E1ED55 /* NewMessageViewController.m */,
 				94F5F04314E5678A00E1ED55 /* LoginViewController.h */,
 				94F5F04414E5678A00E1ED55 /* LoginViewController.m */,
+				9448BDB114EA1EC400689915 /* ServerViewController.h */,
+				9448BDB214EA1EC400689915 /* ServerViewController.m */,
+				9448BDB414EA1FD200689915 /* RegisterViewController.h */,
+				9448BDB514EA1FD200689915 /* RegisterViewController.m */,
 				94F5F04914E5686D00E1ED55 /* Usergrid */,
 				94F5F06A14E56D9F00E1ED55 /* Images */,
 				94328D3F14E563A200153B08 /* Supporting Files */,
@@ -228,8 +258,12 @@
 		94F5F04914E5686D00E1ED55 /* Usergrid */ = {
 			isa = PBXGroup;
 			children = (
-				94F5F04614E5686000E1ED55 /* UGClient.h */,
-				94F5F04714E5686000E1ED55 /* UGClient.m */,
+				94F5F07F14E573DE00E1ED55 /* UGClient.h */,
+				94F5F08014E573DE00E1ED55 /* UGClient.m */,
+				947A5D7614E860B200B2F426 /* UGUser.h */,
+				947A5D7714E860B200B2F426 /* UGUser.m */,
+				947A5D7914E860D500B2F426 /* UGActivitie.h */,
+				947A5D7A14E860D500B2F426 /* UGActivitie.m */,
 			);
 			name = Usergrid;
 			sourceTree = "<group>";
@@ -237,16 +271,23 @@
 		94F5F06A14E56D9F00E1ED55 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9474287914E7A1EB00BD402C /* Default@2x.png */,
+				94F5F0DF14E7623600E1ED55 /* Icon2.png */,
+				9448BDAD14E9975300689915 /* serverField.png */,
+				94F5F0DD14E7622300E1ED55 /* Icon1.png */,
 				94F5F04C14E56D8200E1ED55 /* addPeople@2x.png */,
 				94F5F04D14E56D8200E1ED55 /* Background@2x.png */,
+				9448BDAF14E99C2900689915 /* usernameField@2x.png */,
 				94F5F04E14E56D8200E1ED55 /* friend.png */,
+				94F5F08E14E57BC700E1ED55 /* loginFields@2x.png */,
 				94F5F04F14E56D8200E1ED55 /* friend@2x.png */,
-				94F5F05014E56D8200E1ED55 /* Icon1.png */,
-				94F5F05114E56D8200E1ED55 /* Icon2.png */,
 				94F5F05214E56D8200E1ED55 /* leftButton@2x.png */,
+				9448BDA714E9886200689915 /* logo@2x.png */,
 				94F5F05314E56D8200E1ED55 /* login@2x.png */,
 				94F5F05414E56D8200E1ED55 /* messagesBoard.png */,
+				9448BDAB14E9909500689915 /* changeServer@2x.png */,
 				94F5F05514E56D8200E1ED55 /* messagesBoard@2x.png */,
+				9448BDA914E989B300689915 /* register@2x.png */,
 				94F5F05614E56D8200E1ED55 /* navigationBar@2x.png */,
 				94F5F05714E56D8200E1ED55 /* newMessage@2x.png */,
 				94F5F05814E56D8200E1ED55 /* rightButton@2x.png */,
@@ -350,8 +391,6 @@
 				94F5F05C14E56D8300E1ED55 /* Background@2x.png in Resources */,
 				94F5F05D14E56D8300E1ED55 /* friend.png in Resources */,
 				94F5F05E14E56D8300E1ED55 /* friend@2x.png in Resources */,
-				94F5F05F14E56D8300E1ED55 /* Icon1.png in Resources */,
-				94F5F06014E56D8300E1ED55 /* Icon2.png in Resources */,
 				94F5F06114E56D8300E1ED55 /* leftButton@2x.png in Resources */,
 				94F5F06214E56D8300E1ED55 /* login@2x.png in Resources */,
 				94F5F06314E56D8300E1ED55 /* messagesBoard.png in Resources */,
@@ -361,6 +400,15 @@
 				94F5F06714E56D8300E1ED55 /* rightButton@2x.png in Resources */,
 				94F5F06814E56D8300E1ED55 /* settings.png in Resources */,
 				94F5F06914E56D8300E1ED55 /* settings@2x.png in Resources */,
+				94F5F08F14E57BC700E1ED55 /* loginFields@2x.png in Resources */,
+				94F5F0DE14E7622300E1ED55 /* Icon1.png in Resources */,
+				94F5F0E014E7623700E1ED55 /* Icon2.png in Resources */,
+				9474287A14E7A1EB00BD402C /* Default@2x.png in Resources */,
+				9448BDA814E9886300689915 /* logo@2x.png in Resources */,
+				9448BDAA14E989B300689915 /* register@2x.png in Resources */,
+				9448BDAC14E9909500689915 /* changeServer@2x.png in Resources */,
+				9448BDAE14E9975300689915 /* serverField.png in Resources */,
+				9448BDB014E99C2900689915 /* usernameField@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,7 +425,11 @@
 				94328D5614E563A200153B08 /* PeopleViewController.m in Sources */,
 				94F5F04214E5676C00E1ED55 /* NewMessageViewController.m in Sources */,
 				94F5F04514E5678A00E1ED55 /* LoginViewController.m in Sources */,
-				94F5F04814E5686100E1ED55 /* UGClient.m in Sources */,
+				94F5F08114E573DE00E1ED55 /* UGClient.m in Sources */,
+				947A5D7814E860B200B2F426 /* UGUser.m in Sources */,
+				947A5D7B14E860D500B2F426 /* UGActivitie.m in Sources */,
+				9448BDB314EA1EC400689915 /* ServerViewController.m in Sources */,
+				9448BDB614EA1FD300689915 /* RegisterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +515,7 @@
 				GCC_PREFIX_HEADER = "Messagee/Messagee-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(SOURCE_ROOT)/RestKit/Build\"";
 				INFOPLIST_FILE = "Messagee/Messagee-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -479,6 +532,7 @@
 				GCC_PREFIX_HEADER = "Messagee/Messagee-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(SOURCE_ROOT)/RestKit/Build\"";
 				INFOPLIST_FILE = "Messagee/Messagee-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",

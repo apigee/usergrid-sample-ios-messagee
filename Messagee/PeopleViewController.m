@@ -9,6 +9,7 @@
 #import "PeopleViewController.h"
 
 @implementation PeopleViewController
+@synthesize usernameTextField;
 
 - (void)didReceiveMemoryWarning
 {
@@ -26,6 +27,7 @@
 
 - (void)viewDidUnload
 {
+    [self setUsernameTextField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -57,4 +59,18 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+- (IBAction)addPeople:(id)sender {
+    NSLog(@"Add people Action");
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textFieldView {
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)];
+    [self.view addGestureRecognizer:gestureRecognizer];
+}
+
+- (void)hideKeyboard:(UITapGestureRecognizer *)sender {
+    [self.view removeGestureRecognizer:sender];
+    [usernameTextField resignFirstResponder];
+    
+}
 @end

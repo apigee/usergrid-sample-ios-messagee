@@ -57,4 +57,12 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (IBAction)registerButton:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (IBAction)cancelRegisterButton:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 @end
