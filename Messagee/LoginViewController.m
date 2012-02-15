@@ -16,7 +16,9 @@
 @synthesize passwordTextField;
 
 - (void)authorizeUser:(NSString *)username withPassword:(NSString *)password {
-    [[RKClient sharedClient] get:[NSString stringWithFormat:@"%@/token?grant_type=password&username=%@&password=%@", [[UGClient sharedInstance] usergridApp], username, password] delegate:self];
+    // GET access token from: /<App>/token?grand_type=password&username=<username>&password=<password>
+    [[RKClient sharedClient] get:[NSString stringWithFormat:@"%@/token?grant_type=password&username=%@&password=%@",
+                                  [[UGClient sharedInstance] usergridApp], username, password] delegate:self];
 }
 
 - (IBAction)loginButton:(id)sender {

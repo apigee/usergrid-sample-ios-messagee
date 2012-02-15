@@ -80,8 +80,9 @@
     NSString *json = [parser stringFromObject:rpcData error:&error];    
     
     if (!error){
-        // TODO: change the app name and user must be dynamic from UGClient
-        [[[RKClient sharedClient] post:@"/Messagee/user/netoxico/activities/"
+        // POST json message to: /<app_name>/user/<username>/activities/ 
+        // TODO: change user must be dynamic from UGClient
+        [[[RKClient sharedClient] post:[NSString stringWithFormat:@"/%@/user/netoxico/activities/", [[UGClient sharedInstance] usergridApp]]
                  params:[RKRequestSerialization serializationWithData:[json dataUsingEncoding:NSUTF8StringEncoding] MIMEType:RKMIMETypeJSON]
                delegate:self] send];
     }

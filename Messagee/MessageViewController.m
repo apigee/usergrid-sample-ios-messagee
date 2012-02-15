@@ -28,8 +28,11 @@
     [[RKObjectManager sharedManager].mappingProvider setMapping:userMapping forKeyPath:@"entities"];
 
     // Request user feed
-    // TODO:Change the app name and user form UGclient
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"Messagee/user/netoxico/feed?limit=20" delegate:self];
+    // TODO:Change the app name and user from UGclient
+    [[RKObjectManager sharedManager] 
+     loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@/user/netoxico/feed?limit=20",
+                                [[UGClient sharedInstance] usergridApp]]
+     delegate:self];
 }
 
 
