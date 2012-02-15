@@ -16,25 +16,17 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Usergrid Settings
-    [[UGClient sharedInstance] setUsergridApiUrl:@"http://apigee-test.usergrid.com"];
-    [[UGClient sharedInstance] setUsergridApp:@"Messagee"];
-    [[UGClient sharedInstance] setUsergridKey:@"b3U6C-K7vkw9EeG0HSIAChxOIg"];
-    [[UGClient sharedInstance] setUsergridSecret:@"b3U6Qxux-D4mO8uaTrSrjpEbikgshvk"];
+    [[UGClient sharedInstance] UGClientApiUrl:@"http://apigee-test.usergrid.com"];//Usergid Server
+    [[UGClient sharedInstance] setUsergridApp:@"Messagee"];//Usergrid Appname
     
-    RKClient *client = [RKClient clientWithBaseURL:[[UGClient sharedInstance] usergridApiUrl]];
-    [RKClient setSharedClient:client];
+    // UsergridKey and UsergidSecret are obtained
+    // from the app settings http://http://apigee.github.com/usergrid-portal-internal/
+    [[UGClient sharedInstance] setUsergridKey:@"YXA6R5duelZ-EeG_tyIAChxaZw"];//Client ID
+    [[UGClient sharedInstance] setUsergridSecret:@"YXA6aa5MWiNeOxgTl2kFy_eBsbpFh44"];//Client Secret
     
-    // Load the object model via RestKit	
-    RKObjectManager* objectManager = [RKObjectManager objectManagerWithBaseURL:[[UGClient sharedInstance] usergridApiUrl]];
-    
-    RKObjectMapping* userMapping = [RKObjectMapping mappingForClass:[UGActivitie class]];
-    [userMapping mapKeyPath:@"content" toAttribute:@"content"];
-    [userMapping mapKeyPath:@"type" toAttribute:@"type"];
-    
-    [objectManager.mappingProvider setMapping:userMapping forKeyPath:@"entities"];
-    
+    [[UGClient sharedInstance] requestClientCredentials];
+
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navigationBar"] forBarMetrics:UIBarMetricsDefault];
-    
     return YES;
 }
 							

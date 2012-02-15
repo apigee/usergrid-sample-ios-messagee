@@ -11,7 +11,7 @@
 
 @interface LoginViewController : UIViewController <RKRequestDelegate> {
     UITextField *currentTextField;
-    UIButton *_loginButton;
+    UIButton *loginButton;
     BOOL keyboardIsShown;
 }
 

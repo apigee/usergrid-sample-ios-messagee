@@ -16,6 +16,4 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
-- (void)loadTimeline;
-
 @end

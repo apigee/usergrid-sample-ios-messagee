@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface UGUser : NSObject
+@interface UGUser : NSObject {
+    NSString *username;
+    NSString *email;
+}
+
++ (UGUser *)sharedInstance;
+
+@property(nonatomic, strong) NSString *username;
+@property(nonatomic, strong) NSString *email;
 
 @end

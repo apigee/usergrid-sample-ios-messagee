@@ -53,12 +53,6 @@
 	[super viewDidDisappear:animated];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-}
-
 - (IBAction)addPeople:(id)sender {
     NSLog(@"Add people Action");
 }
@@ -71,6 +65,6 @@
 - (void)hideKeyboard:(UITapGestureRecognizer *)sender {
     [self.view removeGestureRecognizer:sender];
     [usernameTextField resignFirstResponder];
-    
 }
+
 @end

@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <RestKit/RestKit.h>
+#import <RestKit/RKRequestSerialization.h>
+#import "UGClient.h"
 
-@interface RegisterViewController : UIViewController
+@interface RegisterViewController : UIViewController <RKRequestDelegate> {
+    
+}
 
 @end

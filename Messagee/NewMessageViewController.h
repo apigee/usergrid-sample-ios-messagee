@@ -10,9 +10,8 @@
 #import <RestKit/RestKit.h>
 #import <RestKit/RKRequestSerialization.h>
 #import "UGClient.h"
-#import "MessageViewController.h"
 
-@interface NewMessageViewController : UIViewController <RKRequestDelegate, RKObjectLoaderDelegate> {
+@interface NewMessageViewController : UIViewController <RKRequestDelegate> {
     
 }
 

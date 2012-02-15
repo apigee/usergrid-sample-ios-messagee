@@ -10,4 +10,16 @@
 
 @implementation UGUser
 
+@synthesize username = _username;
+@synthesize email = _email;
+
++ (UGUser *)sharedInstance
+{
+    static UGUser *myInstance = nil;
+    if (nil == myInstance) {
+        myInstance  = [[[self class] alloc] init];
+    }
+    return myInstance;
+}
+
 @end

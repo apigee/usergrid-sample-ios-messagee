@@ -12,4 +12,5 @@
 @interface ServerViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *serverTextField;
+
 @end

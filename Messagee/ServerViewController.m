@@ -58,6 +58,7 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
 - (IBAction)changeServerButton:(id)sender {
     [[UGClient sharedInstance] setUsergridApiUrl:[serverTextField text]];
     [self dismissModalViewControllerAnimated:YES];

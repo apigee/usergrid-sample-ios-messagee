@@ -65,10 +65,6 @@
     NSMutableDictionary *rpcData = [[NSMutableDictionary alloc] init ];
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
-    [RKClient sharedClient].baseURL = [[UGClient sharedInstance] usergridApiUrl];
-    
-    [[RKClient sharedClient] setValue:[NSString stringWithFormat:@"Bearer %@", [[UGClient sharedInstance] accessToken]] forHTTPHeaderField:@"Authorization"];
-    
     // User Params
     [params setObject:@"netoxico" forKey:@"displayName"];
     [params setObject:@"elhibrido@gmail.com" forKey:@"email"];
@@ -84,11 +80,10 @@
     NSString *json = [parser stringFromObject:rpcData error:&error];    
     
     if (!error){
+        // TODO: change the app name and user must be dynamic from UGClient
         [[[RKClient sharedClient] post:@"/Messagee/user/netoxico/activities/"
                  params:[RKRequestSerialization serializationWithData:[json dataUsingEncoding:NSUTF8StringEncoding] MIMEType:RKMIMETypeJSON]
                delegate:self] send];
-        
-        [self dismissModalViewControllerAnimated:YES];
     }
 }
 
@@ -98,40 +93,24 @@
 
 
 - (void)requestDidStartLoad:(RKRequest *)request {
-    //NSLog(@"Request start load %@", request.params);
+    NSLog(@"Request did start load %@", request.params);
 }
 
 - (void)request:(RKRequest *)request didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
-    //NSLog(@"Request did send body data");
+    NSLog(@"Request did send body data: %@", request.HTTPBody);
 }
 
 - (void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response {
-    //RKLogCritical(@"Loading of RKRequest %@ completed with status code %d. Response body: %@", request, response.statusCode, [response bodyAsString]);
-    //NSLog(@"json: %@", [response parsedBody:nil]);
+    if ((response.isOK)&&(response.isJSON)) {
+        NSLog(@"json: %@", [response parsedBody:nil]);
+        [self dismissModalViewControllerAnimated:YES];
+    } else {
+        RKLogCritical(@"Loading of RKRequest %@ completed with status code %d. Response body: %@", request, response.statusCode, [response bodyAsString]);
+    }
 }
 
 - (void)request:(RKRequest *)request didFailLoadWithError:(NSError *)error {
     NSLog(@"Did Fail Load with error %@", error);
-}
-
--( void)request:(RKRequest *)objectLoaderdidLoadObjects:(NSArray*)objects{
-    NSLog(@"Loadedstatuses:%@",objects);
-}
-
-#pragma mark RKObjectLoaderDelegate methods
-- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-	//NSLog(@"Loaded object: %@", [objects objectAtIndex:0]);
-    
-}
-
-- (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error {
-    NSLog(@"Encountered an error: %@", error);
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 @end

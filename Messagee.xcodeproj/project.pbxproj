@@ -23,6 +23,7 @@
 		9448BDB014E99C2900689915 /* usernameField@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9448BDAF14E99C2900689915 /* usernameField@2x.png */; };
 		9448BDB314EA1EC400689915 /* ServerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9448BDB214EA1EC400689915 /* ServerViewController.m */; };
 		9448BDB614EA1FD300689915 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9448BDB514EA1FD200689915 /* RegisterViewController.m */; };
+		9448BDB814EB242800689915 /* logout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9448BDB714EB242700689915 /* logout@2x.png */; };
 		9474287A14E7A1EB00BD402C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9474287914E7A1EB00BD402C /* Default@2x.png */; };
 		947A5D7814E860B200B2F426 /* UGUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 947A5D7714E860B200B2F426 /* UGUser.m */; };
 		947A5D7B14E860D500B2F426 /* UGActivitie.m in Sources */ = {isa = PBXBuildFile; fileRef = 947A5D7A14E860D500B2F426 /* UGActivitie.m */; };
@@ -117,6 +118,7 @@
 		9448BDB214EA1EC400689915 /* ServerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerViewController.m; sourceTree = "<group>"; };
 		9448BDB414EA1FD200689915 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		9448BDB514EA1FD200689915 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		9448BDB714EB242700689915 /* logout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logout@2x.png"; sourceTree = "<group>"; };
 		9474287914E7A1EB00BD402C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		947A5D7614E860B200B2F426 /* UGUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UGUser.h; path = Usergrid/UGUser.h; sourceTree = "<group>"; };
 		947A5D7714E860B200B2F426 /* UGUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UGUser.m; path = Usergrid/UGUser.m; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				9448BDAD14E9975300689915 /* serverField.png */,
 				94F5F0DD14E7622300E1ED55 /* Icon1.png */,
 				94F5F04C14E56D8200E1ED55 /* addPeople@2x.png */,
+				9448BDB714EB242700689915 /* logout@2x.png */,
 				94F5F04D14E56D8200E1ED55 /* Background@2x.png */,
 				9448BDAF14E99C2900689915 /* usernameField@2x.png */,
 				94F5F04E14E56D8200E1ED55 /* friend.png */,
@@ -409,6 +412,7 @@
 				9448BDAC14E9909500689915 /* changeServer@2x.png in Resources */,
 				9448BDAE14E9975300689915 /* serverField.png in Resources */,
 				9448BDB014E99C2900689915 /* usernameField@2x.png in Resources */,
+				9448BDB814EB242800689915 /* logout@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

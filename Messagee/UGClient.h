@@ -10,12 +10,15 @@
 #import <RestKit/RestKit.h> 
 #import "UGActivitie.h"
 
-@interface UGClient: NSObject {
+@interface UGClient: NSObject <RKRequestDelegate> {
     NSString *usergridApiUrl;
     NSString *usergridApp;
     NSString *usergridKey;
     NSString *usergridSecret;
     
+    NSString *clientCredentials;
+    
+    NSString *user;
     NSString *_accessToken;
     BOOL isUserLoged;
 }
@@ -25,8 +28,15 @@
 @property(nonatomic, strong) NSString *usergridKey;
 @property(nonatomic, strong) NSString *usergridSecret;
 
+@property(nonatomic, strong) NSString *clientCredentials;
+
+@property(nonatomic, strong) NSString *user;
 @property(nonatomic) BOOL isUserLoged;
 @property(nonatomic, strong) NSString *accessToken;
 
-+(UGClient *)sharedInstance;
++ (UGClient *)sharedInstance;
+- (void)UGClientApiUrl:(NSString *)url;
+- (void)UGClientAccessToken:(NSString *)accessToken;
+- (void)requestClientCredentials;
+
 @end

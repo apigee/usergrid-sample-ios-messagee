@@ -20,18 +20,23 @@
 
 #pragma mark - View lifecycle
 
-- (void)loadTimeline {
-    RKObjectManager* objectManager = [RKObjectManager sharedManager];
-    objectManager.client.baseURL = [[UGClient sharedInstance] usergridApiUrl];
-    [[RKObjectManager sharedManager].client setValue:[NSString stringWithFormat:@"Bearer %@", [[UGClient sharedInstance] accessToken]] forHTTPHeaderField:@"Authorization"];
-    [objectManager loadObjectsAtResourcePath:@"Messagee/user/netoxico/feed?limit=20" delegate:self];
+- (void)loadMessageBoard {
+    // Message Maping
+    RKObjectMapping* userMapping = [RKObjectMapping mappingForClass:[UGActivitie class]];
+    [userMapping mapKeyPath:@"content" toAttribute:@"content"];
+    [userMapping mapKeyPath:@"type" toAttribute:@"type"];    
+    [[RKObjectManager sharedManager].mappingProvider setMapping:userMapping forKeyPath:@"entities"];
+
+    // Request user feed
+    // TODO:Change the app name and user form UGclient
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"Messagee/user/netoxico/feed?limit=20" delegate:self];
 }
+
 
 - (void)viewDidLoad
 {
+    // When view did load, create table and load message board
     [super viewDidLoad];
-    
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navigationBar"] forBarMetrics:UIBarMetricsDefault];
     
     self.scrollView.frame = CGRectMake(0, 0, 320, 460);
     
@@ -42,8 +47,10 @@
 	_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self.scrollView addSubview:_tableView];
-    [self loadTimeline];
-    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(loadTimeline) userInfo:NULL repeats:YES];
+    [self loadMessageBoard];
+    
+    // Load message board every 5 seconds 
+    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(loadMessageBoard) userInfo:NULL repeats:YES];
 }
 
 - (void)viewDidUnload
@@ -77,7 +84,7 @@
 #pragma mark RKObjectLoaderDelegate methods
 
 - (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
-    //NSLog(@"<<*>>Loaded payload: %@", [response bodyAsString]);
+    //NSLog(@"* Did load response: %@", [response bodyAsString]);
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
@@ -88,7 +95,7 @@
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error {
-	NSLog(@"<<*>>Hit error: %@", error);
+	NSLog(@"**Object loader did fail with Error: %@", error);
 }
 
 
@@ -103,7 +110,6 @@
 #pragma mark UITableViewDataSource methods
 
 - (NSInteger)tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section {
-    NSLog(@" count >>>>%d", [_statuses count]);
 	return [_statuses count];
 }
 
@@ -120,12 +126,6 @@
 	}
 	cell.textLabel.text = [[_statuses objectAtIndex:indexPath.row] content];
 	return cell;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
 @end

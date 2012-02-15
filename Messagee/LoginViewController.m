@@ -16,16 +16,13 @@
 @synthesize passwordTextField;
 
 - (void)authorizeUser:(NSString *)username withPassword:(NSString *)password {
-    //UGClient *client = [[UGClient alloc] init];
-    [RKClient sharedClient].baseURL = [[UGClient sharedInstance] usergridApiUrl];
-    [[RKClient sharedClient] get:[NSString stringWithFormat:@"Messagee/token?grant_type=password&username=%@&password=%@", username, password] delegate:self];
+    [[RKClient sharedClient] get:[NSString stringWithFormat:@"%@/token?grant_type=password&username=%@&password=%@", [[UGClient sharedInstance] usergridApp], username, password] delegate:self];
 }
 
 - (IBAction)loginButton:(id)sender {
     [self authorizeUser:[usernameTextField text] withPassword:[passwordTextField text]];
     
     if ([[UGClient sharedInstance] isUserLoged]) {
-        
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
         UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"tabBarController"];
 
@@ -161,12 +158,6 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
 
 - (void)requestDidStartLoad:(RKRequest *)request {
     //NSLog(@"Request start load %@", request.params);
@@ -182,8 +173,7 @@
     
     if ([response isSuccessful]) {
         if ([[response parsedBody:nil] objectForKey:@"access_token"]) {
-            //UGClient *object = [UGClient sharedInstance];
-            [[UGClient sharedInstance] setAccessToken:[[response parsedBody:nil] objectForKey:@"access_token"]];
+            [[UGClient sharedInstance] UGClientAccessToken:[[response parsedBody:nil] objectForKey:@"access_token"]];
             
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
             UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"tabBarController"];

@@ -46,6 +46,22 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LtZ-D6-0Fj">
+                                <rect key="frame" x="5" y="7" width="60" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="12"/>
+                                <state key="normal" title="Logout" backgroundImage="leftButton@2x.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeMessage:" destination="CY4-Lf-9ox" eventType="touchUpInside" id="w4s-bq-ATa"/>
+                                    <segue destination="r1M-Kr-TUQ" kind="modal" id="YLb-Ni-Hgw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -55,7 +71,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-81" y="-62"/>
+            <point key="canvasLocation" x="-75" y="-359"/>
         </scene>
         <scene sceneID="ecH-1s-dZ7">
             <objects>
@@ -126,7 +142,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="368" y="-62"/>
+            <point key="canvasLocation" x="471" y="-359"/>
         </scene>
         <scene sceneID="13">
             <objects>
@@ -169,6 +185,22 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Tj5-y0-Wgm">
+                                <rect key="frame" x="5" y="7" width="60" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="12"/>
+                                <state key="normal" title="Logout" backgroundImage="leftButton@2x.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeMessage:" destination="CY4-Lf-9ox" eventType="touchUpInside" id="GsI-ny-M5e"/>
+                                    <segue destination="r1M-Kr-TUQ" kind="modal" id="9S5-Ty-kd3"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" id="myY-MF-r0p">
                                 <rect key="frame" x="80" y="124" width="202" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -187,7 +219,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-81" y="574"/>
+            <point key="canvasLocation" x="-75" y="274"/>
         </scene>
         <scene sceneID="KP3-L9-ByS">
             <objects>
@@ -293,6 +325,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Logout" image="logout" id="TAH-Pt-0vx"/>
                     <connections>
                         <outlet property="passwordTextField" destination="xHT-jk-arP" id="0xf-7a-VsW"/>
                         <outlet property="scrollView" destination="BMz-o7-Hcp" id="sqH-LY-Gdm"/>
@@ -300,7 +333,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="362" y="574"/>
+            <point key="canvasLocation" x="477" y="247"/>
         </scene>
         <scene sceneID="Yim-CI-OI1">
             <objects>
@@ -385,7 +418,7 @@
                     </view>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="903" y="274"/>
+            <point key="canvasLocation" x="1023" y="-13"/>
         </scene>
         <scene sceneID="44S-8j-gHL">
             <objects>
@@ -459,12 +492,13 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="903" y="848"/>
+            <point key="canvasLocation" x="1023" y="561"/>
         </scene>
         <scene sceneID="15">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
                 <tabBarController storyboardIdentifier="tabBarController" id="4" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Zoe-ID-lQf"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="5">
                         <rect key="frame" x="0.0" y="431" width="320" height="49"/>
@@ -477,7 +511,7 @@
                     </connections>
                 </tabBarController>
             </objects>
-            <point key="canvasLocation" x="-622" y="274"/>
+            <point key="canvasLocation" x="-615" y="-64"/>
         </scene>
     </scenes>
     <resources>
@@ -489,6 +523,7 @@
         <image name="login@2x.png" width="272" height="115"/>
         <image name="loginFields@2x.png" width="570" height="230"/>
         <image name="logo@2x.png" width="334" height="51"/>
+        <image name="logout" width="16" height="16"/>
         <image name="messagesBoard" width="16" height="16"/>
         <image name="newMessage@2x.png" width="90" height="58"/>
         <image name="register@2x.png" width="272" height="115"/>
@@ -538,4 +573,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="9S5-Ty-kd3"/>
+    </inferredMetricsTieBreakers>
 </document>
