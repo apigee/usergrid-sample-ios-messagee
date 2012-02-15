@@ -66,8 +66,9 @@
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
     // User Params
-    [params setObject:@"netoxico" forKey:@"displayName"];
-    [params setObject:@"elhibrido@gmail.com" forKey:@"email"];
+    [params setObject:[[UGUser sharedInstance] username] forKey:@"displayName"];
+    [params setObject:[[UGUser sharedInstance] email] forKey:@"email"];
+    [params setObject:[[UGUser sharedInstance] picture] forKey:@"picture"];
     
     // Post message params
     [rpcData setValue:params forKey:@"actor"];
@@ -81,8 +82,7 @@
     
     if (!error){
         // POST json message to: /<app_name>/user/<username>/activities/ 
-        // TODO: change user must be dynamic from UGClient
-        [[[RKClient sharedClient] post:[NSString stringWithFormat:@"/%@/user/netoxico/activities/", [[UGClient sharedInstance] usergridApp]]
+        [[[RKClient sharedClient] post:[NSString stringWithFormat:@"/%@/user/%@/activities/", [[UGClient sharedInstance] usergridApp], [[UGUser sharedInstance] username]]
                  params:[RKRequestSerialization serializationWithData:[json dataUsingEncoding:NSUTF8StringEncoding] MIMEType:RKMIMETypeJSON]
                delegate:self] send];
     }

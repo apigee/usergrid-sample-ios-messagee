@@ -11,11 +11,13 @@
 @interface UGUser : NSObject {
     NSString *username;
     NSString *email;
+    NSString *picture;
 }
 
 + (UGUser *)sharedInstance;
 
 @property(nonatomic, strong) NSString *username;
 @property(nonatomic, strong) NSString *email;
+@property(nonatomic, strong) NSString *picture;
 
 @end

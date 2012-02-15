@@ -16,9 +16,19 @@
 @synthesize passwordTextField;
 
 - (void)authorizeUser:(NSString *)username withPassword:(NSString *)password {
-    // GET access token from: /<App>/token?grand_type=password&username=<username>&password=<password>
-    [[RKClient sharedClient] get:[NSString stringWithFormat:@"%@/token?grant_type=password&username=%@&password=%@",
-                                  [[UGClient sharedInstance] usergridApp], username, password] delegate:self];
+    // GET access token and map user data 
+    //from: /<App>/token?grand_type=password&username=<username>&password=<password>
+    
+    RKObjectMapping* userMapping = [RKObjectMapping mappingForClass:[UGUser class]];
+    [userMapping mapKeyPath:@"username" toAttribute:@"username"];
+    [userMapping mapKeyPath:@"email" toAttribute:@"email"];
+    [userMapping mapKeyPath:@"picture" toAttribute:@"picture"];  
+    [[RKObjectManager sharedManager].mappingProvider setMapping:userMapping forKeyPath:@"user"];
+    
+    [[RKObjectManager sharedManager] 
+     loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@/token?grant_type=password&username=%@&password=%@",
+                                [[UGClient sharedInstance] usergridApp], username, password]
+     delegate:self];
 }
 
 - (IBAction)loginButton:(id)sender {
@@ -103,20 +113,16 @@
     if (keyboardIsShown) return;
     NSDictionary* info = [notification userInfo];
     
-    //—-obtain the size of the keyboard—-
     NSValue *aValue = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
     CGRect keyboardRect = [self.view convertRect:[aValue CGRectValue] fromView:nil];
     //NSLog(@"%f", keyboardRect.size.height);
     
-    //—-resize the scroll view (with keyboard)—-
     CGRect viewFrame = [scrollView frame];
     viewFrame.size.height -= keyboardRect.size.height;
     //viewFrame.size.height -= 25;
     scrollView.frame = viewFrame;
     
-    //—-scroll to the current text field—-
     CGRect textFieldRect = [currentTextField frame];
-    //NSLog(@"%@", NSStringFromCGRect(textFieldRect));
     [scrollView scrollRectToVisible:textFieldRect animated:YES];
     keyboardIsShown = YES;
 }
@@ -124,14 +130,12 @@
 - (void)keyboardDidHide:(NSNotification *) notification {
     NSDictionary* info = [notification userInfo];
     
-    //—-obtain the size of the keyboard—-
     NSValue* aValue = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
     CGRect keyboardRect = [self.view convertRect:[aValue CGRectValue] fromView:nil];
     
-    //—-resize the scroll view back to the original size (without keyboard)
     CGRect viewFrame = [scrollView frame];
     viewFrame.size.height += keyboardRect.size.height;
-    //viewFrame.size.height += 25;
+
     scrollView.frame = viewFrame;
     keyboardIsShown = NO;
 }
@@ -176,11 +180,6 @@
     if ([response isSuccessful]) {
         if ([[response parsedBody:nil] objectForKey:@"access_token"]) {
             [[UGClient sharedInstance] UGClientAccessToken:[[response parsedBody:nil] objectForKey:@"access_token"]];
-            
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-            UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"tabBarController"];
-            [self presentViewController:vc animated:NO completion:nil];
-            
         } else if ([[response parsedBody:nil] objectForKey:@"error"]) {
             UIAlertView* alert = [[UIAlertView alloc]
                                   initWithTitle:nil
@@ -200,22 +199,19 @@
 }
 
 - (void)request:(RKRequest *)request didFailLoadWithError:(NSError *)error {
-    NSLog(@"Did Fail Load with error %@", error);
-    UIAlertView* alert = [[UIAlertView alloc]
-                          initWithTitle:[NSString stringWithFormat:@"Error %d", error.code]
-                          message:[NSString stringWithFormat:@"%@", error]
-                          delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
-}
-
--( void)request:(RKRequest *)objectLoaderdidLoadObjects:(NSArray*)objects{
-    NSLog(@"Loadedstatuses:%@",objects);
+    NSLog(@"Did fail Load user object with error %@", error);
 }
 
 #pragma mark RKObjectLoaderDelegate methods
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-	//NSLog(@"Loaded object: %@", [objects objectAtIndex:0]);
+    UGUser *user = [objects objectAtIndex:0];
+    [[UGUser sharedInstance] setUsername:user.username];
+    [[UGUser sharedInstance] setEmail:user.email];
+    [[UGUser sharedInstance] setPicture:user.picture];
     
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"tabBarController"];
+    [self presentViewController:vc animated:NO completion:nil];
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error {

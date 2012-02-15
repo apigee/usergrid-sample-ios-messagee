@@ -12,6 +12,7 @@
 
 @synthesize username = _username;
 @synthesize email = _email;
+@synthesize picture = _picture;
 
 + (UGUser *)sharedInstance
 {

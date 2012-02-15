@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <RestKit/RestKit.h> 
+#import "UGUser.h"
 
-@interface LoginViewController : UIViewController <RKRequestDelegate> {
+@interface LoginViewController : UIViewController <RKRequestDelegate, RKObjectLoaderDelegate> {
     UITextField *currentTextField;
     UIButton *loginButton;
     BOOL keyboardIsShown;
+    NSArray* _access;
 }
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;

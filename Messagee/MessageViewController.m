@@ -7,7 +7,7 @@
 //
 
 #import "MessageViewController.h"
-#import "UGClient.h"
+
 
 @implementation MessageViewController
 @synthesize scrollView = _scrollView;
@@ -28,10 +28,9 @@
     [[RKObjectManager sharedManager].mappingProvider setMapping:userMapping forKeyPath:@"entities"];
 
     // Request user feed
-    // TODO:Change the app name and user from UGclient
     [[RKObjectManager sharedManager] 
-     loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@/user/netoxico/feed?limit=20",
-                                [[UGClient sharedInstance] usergridApp]]
+     loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@/user/%@/feed?limit=20",
+                                [[UGClient sharedInstance] usergridApp], [[UGUser sharedInstance] username]]
      delegate:self];
 }
 
