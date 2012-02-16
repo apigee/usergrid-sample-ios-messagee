@@ -81,8 +81,8 @@
     NSString *json = [parser stringFromObject:rpcData error:&error];    
     
     if (!error){
-        // POST json message to: /<app_name>/user/<username>/activities/ 
-        [[[RKClient sharedClient] post:[NSString stringWithFormat:@"/%@/user/%@/activities/", [[UGClient sharedInstance] usergridApp], [[UGUser sharedInstance] username]]
+        // POST json message to: /user/<username>/activities/
+        [[[RKClient sharedClient] post:[NSString stringWithFormat:@"user/%@/activities/", [[UGUser sharedInstance] username]]
                  params:[RKRequestSerialization serializationWithData:[json dataUsingEncoding:NSUTF8StringEncoding] MIMEType:RKMIMETypeJSON]
                delegate:self] send];
     }

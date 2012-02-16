@@ -10,6 +10,7 @@
 #import "UGActivitie.h"
 #import "UGClient.h"
 #import "UGUser.h"
+#import "UGActor.h"
 
 @interface MessageViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, RKObjectLoaderDelegate> {
 	UITableView *_tableView;

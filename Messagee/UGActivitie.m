@@ -12,5 +12,6 @@
 
 @synthesize content = _content;
 @synthesize type = _type;
+@synthesize actor = _actor;
 
 @end

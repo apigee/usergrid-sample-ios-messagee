@@ -21,16 +21,11 @@
 #pragma mark - View lifecycle
 
 - (void)loadMessageBoard {
-    // Message Maping
-    RKObjectMapping* userMapping = [RKObjectMapping mappingForClass:[UGActivitie class]];
-    [userMapping mapKeyPath:@"content" toAttribute:@"content"];
-    [userMapping mapKeyPath:@"type" toAttribute:@"type"];    
-    [[RKObjectManager sharedManager].mappingProvider setMapping:userMapping forKeyPath:@"entities"];
-
     // Request user feed
-    [[RKObjectManager sharedManager] 
-     loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@/user/%@/feed?limit=20",
-                                [[UGClient sharedInstance] usergridApp], [[UGUser sharedInstance] username]]
+    // GET feed from users/<username>/feed?limit=30
+    [[RKObjectManager sharedManager]
+     loadObjectsAtResourcePath:[NSString stringWithFormat:@"user/%@/feed?limit=30",
+                                [[UGUser sharedInstance] username]]
      delegate:self];
 }
 
@@ -50,6 +45,19 @@
     
     [self.scrollView addSubview:_tableView];
     [self loadMessageBoard];
+    
+    
+    // Message Mapping
+    RKObjectMapping* actorMapping = [RKObjectMapping mappingForClass:[UGActor class]];
+    [actorMapping mapAttributes:@"displayName", @"picture", nil];
+    
+    RKObjectMapping* messageMapping = [RKObjectMapping mappingForClass:[UGActivitie class]];
+    [messageMapping mapKeyPath:@"content" toAttribute:@"content"];
+    [messageMapping mapKeyPath:@"type" toAttribute:@"type"];
+    
+    [messageMapping mapKeyPath:@"actor" toRelationship:@"actor" withMapping:actorMapping];
+    
+    [[RKObjectManager sharedManager].mappingProvider setMapping:messageMapping forKeyPath:@"entities"];
     
     // Load message board every 5 seconds 
     [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(loadMessageBoard) userInfo:NULL repeats:YES];
@@ -90,10 +98,9 @@
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-    [self.scrollView setContentSize:CGSizeMake(320, [_tableView contentSize].height)];
     _statuses = objects;
     [_tableView reloadData];
-
+    
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error {
@@ -106,7 +113,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	CGSize size = [[[_statuses objectAtIndex:indexPath.row] content] sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(300, 9000)];
-	return size.height + 10;
+	return size.height + 40;
 }
 
 #pragma mark UITableViewDataSource methods
@@ -119,14 +126,19 @@
 	NSString* reuseIdentifier = @"Cell Identifier";
 	UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
 	if (nil == cell) {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
 		cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
         cell.textLabel.textColor = [UIColor whiteColor];
 		cell.textLabel.numberOfLines = 0;
 		cell.textLabel.backgroundColor = [UIColor clearColor];
-		//cell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"listbg.png"]];
+        cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica" size:16];
+        cell.detailTextLabel.textColor = [UIColor whiteColor];
 	}
-	cell.textLabel.text = [[_statuses objectAtIndex:indexPath.row] content];
+    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:[NSString stringWithFormat:@"%@", [[[_statuses objectAtIndex:indexPath.row] actor] picture] ]]];
+    cell.imageView.image = [UIImage imageWithData: imageData];
+    //cell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"listbg.png"]];
+    cell.textLabel.text = [[[_statuses objectAtIndex:indexPath.row] actor] displayName];
+    cell.detailTextLabel.text = [[_statuses objectAtIndex:indexPath.row] content];
 	return cell;
 }
 

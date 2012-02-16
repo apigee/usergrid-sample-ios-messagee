@@ -12,7 +12,6 @@
 @implementation UGClient
 
 @synthesize usergridApiUrl = _usergridApiUrl;
-@synthesize usergridApp = _usergridApp;
 @synthesize usergridKey = _usergridKey;
 @synthesize usergridSecret = _usergridSecret;
 
@@ -51,8 +50,8 @@
 - (void)requestClientCredentials {
     [RKClient sharedClient].baseURL = [self usergridApiUrl];
     [[RKClient sharedClient]
-     get:[NSString stringWithFormat:@"%@/token?grant_type=client_credentials&client_id=%@&client_secret=%@",
-          self.usergridApp, self.usergridKey, self.usergridSecret]
+     get:[NSString stringWithFormat:@"token?grant_type=client_credentials&client_id=%@&client_secret=%@",
+          self.usergridKey, self.usergridSecret]
      delegate:self];
 }
 

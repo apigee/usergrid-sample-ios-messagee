@@ -12,7 +12,6 @@
 
 @interface UGClient: NSObject <RKRequestDelegate> {
     NSString *usergridApiUrl;
-    NSString *usergridApp;
     NSString *usergridKey;
     NSString *usergridSecret;
     
@@ -24,7 +23,6 @@
 }
 
 @property(nonatomic, strong) NSString *usergridApiUrl;
-@property(nonatomic, strong) NSString *usergridApp;
 @property(nonatomic, strong) NSString *usergridKey;
 @property(nonatomic, strong) NSString *usergridSecret;
 

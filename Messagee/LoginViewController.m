@@ -16,18 +16,17 @@
 @synthesize passwordTextField;
 
 - (void)authorizeUser:(NSString *)username withPassword:(NSString *)password {
-    // GET access token and map user data 
-    //from: /<App>/token?grand_type=password&username=<username>&password=<password>
-    
+    // GET access token and map user data
     RKObjectMapping* userMapping = [RKObjectMapping mappingForClass:[UGUser class]];
     [userMapping mapKeyPath:@"username" toAttribute:@"username"];
     [userMapping mapKeyPath:@"email" toAttribute:@"email"];
     [userMapping mapKeyPath:@"picture" toAttribute:@"picture"];  
     [[RKObjectManager sharedManager].mappingProvider setMapping:userMapping forKeyPath:@"user"];
     
+    // From: token?grand_type=password&username=<username>&password=<password>
     [[RKObjectManager sharedManager] 
-     loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@/token?grant_type=password&username=%@&password=%@",
-                                [[UGClient sharedInstance] usergridApp], username, password]
+     loadObjectsAtResourcePath:[NSString stringWithFormat:@"token?grant_type=password&username=%@&password=%@",
+                            username, password]
      delegate:self];
 }
 

@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <RestKit/RestKit.h>
+#import <RestKit/RKRequestSerialization.h>
+#import "UGUser.h"
 
-@interface PeopleViewController : UIViewController
+@interface PeopleViewController : UIViewController <RKRequestDelegate>{
+}
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 

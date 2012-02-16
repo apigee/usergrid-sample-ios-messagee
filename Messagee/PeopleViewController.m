@@ -54,7 +54,18 @@
 }
 
 - (IBAction)addPeople:(id)sender {
-    NSLog(@"Add people Action");
+    // Parsing rpcData to JSON! 
+        NSMutableDictionary *rpcData = [[NSMutableDictionary alloc] init ];
+    
+    id<RKParser> parser = [[RKParserRegistry sharedRegistry] parserForMIMEType:RKMIMETypeJSON];
+    NSError *error = nil;
+    NSString *json = [parser stringFromObject:rpcData error:&error];
+    
+    //POST json new follower blank parameters
+    [[[RKClient sharedClient] post:[NSString stringWithFormat:@"users/%@/following/user/%@",
+                                [[UGUser sharedInstance] username], [usernameTextField text]]
+                            params:[RKRequestSerialization serializationWithData:[json dataUsingEncoding:NSUTF8StringEncoding] MIMEType:RKMIMETypeJSON]
+                          delegate:self] send];
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textFieldView {
@@ -65,6 +76,28 @@
 - (void)hideKeyboard:(UITapGestureRecognizer *)sender {
     [self.view removeGestureRecognizer:sender];
     [usernameTextField resignFirstResponder];
+}
+
+
+- (void)requestDidStartLoad:(RKRequest *)request {
+    //NSLog(@"Request did start load %@", request.params);
+}
+
+- (void)request:(RKRequest *)request didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
+    //NSLog(@"Request did send body data: %@", request.HTTPBody);
+}
+
+- (void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response {
+    if ((response.isOK)&&(response.isJSON)) {
+        NSLog(@"json: %@", [response parsedBody:nil]);
+        //TODO: Show a success message for following new user        
+    } else {
+        RKLogCritical(@"Loading of RKRequest %@ completed with status code %d. Response body: %@", request, response.statusCode, [response bodyAsString]);
+    }
+}
+
+- (void)request:(RKRequest *)request didFailLoadWithError:(NSError *)error {
+    NSLog(@"Did Fail Load with error %@", error);
 }
 
 @end

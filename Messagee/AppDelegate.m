@@ -15,9 +15,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Usergrid Settings
-    [[UGClient sharedInstance] UGClientApiUrl:@"http://apigee-test.usergrid.com"];//Usergid Server
-    [[UGClient sharedInstance] setUsergridApp:@"Messagee"];//Usergrid Appname
+    // Usergrid default server url
+    [[UGClient sharedInstance] UGClientApiUrl:@"http://api.usergrid.com/Messagee"];//Usergid Server
     
     // UsergridKey and UsergidSecret are obtained
     // from the app settings http://http://apigee.github.com/usergrid-portal-internal/

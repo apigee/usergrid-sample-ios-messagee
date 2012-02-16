@@ -78,7 +78,7 @@
     NSString *json = [parser stringFromObject:params error:&error];    
     
     if (!error){
-        [[[RKClient sharedClient] post:@"/Messagee/users?"
+        [[[RKClient sharedClient] post:@"users"
                                 params:[RKRequestSerialization serializationWithData:[json dataUsingEncoding:NSUTF8StringEncoding] MIMEType:RKMIMETypeJSON]
                               delegate:self] send];
     } 
