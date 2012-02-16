@@ -37,13 +37,14 @@
 }
 */
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
+    self.serverTextField.text = [[UGClient sharedInstance] usergridApiUrl];
     [super viewDidLoad];
 }
-*/
+
 
 - (void)viewDidUnload
 {
@@ -60,7 +61,7 @@
 }
 
 - (IBAction)changeServerButton:(id)sender {
-    [[UGClient sharedInstance] setUsergridApiUrl:[serverTextField text]];
+    [[UGClient sharedInstance] UGClientApiUrl:[serverTextField text]];
     [self dismissModalViewControllerAnimated:YES];
 }
 

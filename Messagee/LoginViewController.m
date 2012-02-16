@@ -15,7 +15,7 @@
 @synthesize usernameTextField;
 @synthesize passwordTextField;
 
-- (void)authorizeUser:(NSString *)username withPassword:(NSString *)password {
+- (void)authorizeUser:(NSString *)username withPassword:(NSString *)password {    
     // GET access token and map user data
     RKObjectMapping* userMapping = [RKObjectMapping mappingForClass:[UGUser class]];
     [userMapping mapKeyPath:@"username" toAttribute:@"username"];
