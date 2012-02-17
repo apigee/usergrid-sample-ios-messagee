@@ -9,6 +9,20 @@
 #import "MessageViewController.h"
 
 
+@interface UIImage (TPAdditions)
+- (UIImage*)imageScaledToSize:(CGSize)size;
+@end
+
+@implementation UIImage (TPAdditions)
+- (UIImage*)imageScaledToSize:(CGSize)size {
+    UIGraphicsBeginImageContext(size);
+    [self drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+@end
+
 @implementation MessageViewController
 @synthesize scrollView = _scrollView;
 
@@ -39,7 +53,7 @@ NSTimer *timer;
     
     self.scrollView.frame = CGRectMake(0, 0, 320, 460);
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 46, 320, 480-64) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 45, 320, 480-64) style:UITableViewStylePlain];
 	_tableView.dataSource = self;
 	_tableView.delegate = self;		
 	_tableView.backgroundColor = [UIColor clearColor];
@@ -130,15 +144,24 @@ NSTimer *timer;
 	UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
 	if (nil == cell) {
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
-		cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
-        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+		cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:12];
+        cell.textLabel.textColor = [UIColor colorWithRed:0.392 green:0.682 blue:0.847 alpha:1];
+        cell.textLabel.backgroundColor = [UIColor whiteColor];
 		cell.textLabel.numberOfLines = 0;
-		cell.textLabel.backgroundColor = [UIColor clearColor];
-        cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica" size:16];
+		//cell.textLabel.backgroundColor = [UIColor clearColor];
+        cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
         cell.detailTextLabel.textColor = [UIColor whiteColor];
 	}
     NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:[NSString stringWithFormat:@"%@", [[[_statuses objectAtIndex:indexPath.row] actor] picture] ]]];
-    cell.imageView.image = [UIImage imageWithData: imageData];
+    UIImage *image = [UIImage imageWithData:imageData];
+    cell.imageView.image = [image imageScaledToSize:CGSizeMake(42, 42)];
+
+    cell.imageView.layer.masksToBounds = YES;
+    cell.imageView.layer.cornerRadius = 22;
+    cell.imageView.layer.borderColor = [[UIColor colorWithRed:0.169 green:0.169 blue:0.169 alpha:1] CGColor];
+    cell.imageView.layer.borderWidth = 4;
+
     //cell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"listbg.png"]];
     cell.textLabel.text = [[[_statuses objectAtIndex:indexPath.row] actor] displayName];
     cell.detailTextLabel.text = [[_statuses objectAtIndex:indexPath.row] content];

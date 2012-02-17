@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import "UGActivitie.h"
 #import "UGClient.h"
 #import "UGUser.h"
