@@ -62,29 +62,37 @@
 
 
 - (IBAction)postMessage:(id)sender {
-    NSMutableDictionary *rpcData = [[NSMutableDictionary alloc] init ];
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    
-    // User Params
-    [params setObject:[[UGUser sharedInstance] username] forKey:@"displayName"];
-    [params setObject:[[UGUser sharedInstance] email] forKey:@"email"];
-    [params setObject:[[UGUser sharedInstance] picture] forKey:@"picture"];
-    
-    // Post message params
-    [rpcData setValue:params forKey:@"actor"];
-    [rpcData setObject:@"post" forKey:@"verb"];
-    [rpcData setObject:[messageTextField text] forKey:@"content"];
-    
-    // Parsing rpcData to JSON! 
-    id<RKParser> parser = [[RKParserRegistry sharedRegistry] parserForMIMEType:RKMIMETypeJSON];
-    NSError *error = nil;
-    NSString *json = [parser stringFromObject:rpcData error:&error];    
-    
-    if (!error){
-        // POST json message to: /user/<username>/activities/
-        [[[RKClient sharedClient] post:[NSString stringWithFormat:@"user/%@/activities/", [[UGUser sharedInstance] username]]
-                 params:[RKRequestSerialization serializationWithData:[json dataUsingEncoding:NSUTF8StringEncoding] MIMEType:RKMIMETypeJSON]
-               delegate:self] send];
+    if (![messageTextField.text isEqualToString:@""]) {
+        NSMutableDictionary *rpcData = [[NSMutableDictionary alloc] init ];
+        NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+        
+        // User Params
+        [params setObject:[[UGUser sharedInstance] username] forKey:@"displayName"];
+        [params setObject:[[UGUser sharedInstance] email] forKey:@"email"];
+        [params setObject:[[UGUser sharedInstance] picture] forKey:@"picture"];
+        
+        // Post message params
+        [rpcData setValue:params forKey:@"actor"];
+        [rpcData setObject:@"post" forKey:@"verb"];
+        [rpcData setObject:[messageTextField text] forKey:@"content"];
+        
+        // Parsing rpcData to JSON! 
+        id<RKParser> parser = [[RKParserRegistry sharedRegistry] parserForMIMEType:RKMIMETypeJSON];
+        NSError *error = nil;
+        NSString *json = [parser stringFromObject:rpcData error:&error];    
+        
+        if (!error){
+            // POST json message to: /user/<username>/activities/
+            [[[RKClient sharedClient] post:[NSString stringWithFormat:@"user/%@/activities/", [[UGUser sharedInstance] username]]
+                                    params:[RKRequestSerialization serializationWithData:[json dataUsingEncoding:NSUTF8StringEncoding] MIMEType:RKMIMETypeJSON]
+                                  delegate:self] send];
+        }
+    } else {
+        UIAlertView* alert = [[UIAlertView alloc]
+                              initWithTitle:@"New message Failed"
+                              message:@"No message content."
+                              delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];            
     }
 }
 
@@ -104,6 +112,11 @@
 - (void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response {
     if ((response.isOK)&&(response.isJSON)) {
         NSLog(@"json: %@", [response parsedBody:nil]);
+        UIAlertView* alert = [[UIAlertView alloc]
+                              initWithTitle:nil
+                              message:@"You created a new message!!"
+                              delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];   
         [self dismissModalViewControllerAnimated:YES];
     } else {
         RKLogCritical(@"Loading of RKRequest %@ completed with status code %d. Response body: %@", request, response.statusCode, [response bodyAsString]);

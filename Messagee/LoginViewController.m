@@ -176,7 +176,6 @@
 - (void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response {
     //RKLogCritical(@"Loading of RKRequest %@ completed with status code %d. Response body: %@", request, response.statusCode, [response bodyAsString]);
     //NSLog(@"json: %@", [response parsedBody:nil]);
-    
     if ([response isSuccessful]) {
         if ([[response parsedBody:nil] objectForKey:@"access_token"]) {
             [[UGClient sharedInstance] UGClientAccessToken:[[response parsedBody:nil] objectForKey:@"access_token"]];
@@ -189,8 +188,8 @@
         }
     } else if ([response isError]) {
         UIAlertView* alert = [[UIAlertView alloc]
-                              initWithTitle:@"Error"
-                              message:[NSString stringWithFormat:@"Status code: %d", response.statusCode]
+                              initWithTitle:@"Sign In Failed"
+                              message:@"Oops, please check your username and password."
                               delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }

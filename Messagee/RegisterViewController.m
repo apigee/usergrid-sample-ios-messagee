@@ -63,6 +63,17 @@
     // e.g. self.myOutlet = nil;
 }
 
+-(BOOL)validateEmail:(NSString *)checkString
+{
+    BOOL stricterFilter = YES;
+    NSString *stricterFilterString = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSString *laxString = @".+@.+\\.[A-Za-z]{2}[A-Za-z]*";
+    NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:checkString];
+}
+
+
 - (IBAction)registerButton:(id)sender {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
@@ -73,11 +84,19 @@
         // There's text in the box.
     }
     
+    if (![self validateEmail:[emailField text]]) {
+        UIAlertView* alert = [[UIAlertView alloc]
+                              initWithTitle:[NSString stringWithFormat:@"Validation Error"]
+                              message:[NSString stringWithFormat:@"Email is incorrect"]
+                              delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+    
     if((passwordField.text == passwordField.text)&&(![passwordField.text isEqualToString:@""])) {
         // User Params
         [params setObject:[usernameField text] forKey:@"username"];
         [params setObject:[nameField text] forKey:@"name"];
-        [params setObject:[nameField text] forKey:@"email"];
+        [params setObject:[emailField text] forKey:@"email"];
         [params setObject:[passwordField text] forKey:@"password"];
         [params setObject:[password2Field text] forKey:@"password"];
         
@@ -142,7 +161,6 @@
                           delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
 }
-
 
 
 

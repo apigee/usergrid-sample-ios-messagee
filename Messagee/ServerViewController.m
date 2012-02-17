@@ -63,6 +63,11 @@
 - (IBAction)changeServerButton:(id)sender {
     [[UGClient sharedInstance] UGClientApiUrl:[serverTextField text]];
     [self dismissModalViewControllerAnimated:YES];
+    UIAlertView* alert = [[UIAlertView alloc]
+                          initWithTitle:nil
+                          message:[NSString stringWithFormat:@"Api url has been updated."]
+                          delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
 }
 
 - (IBAction)closeServerButton:(id)sender {

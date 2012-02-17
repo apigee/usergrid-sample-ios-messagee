@@ -40,6 +40,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    usernameTextField.text = @"";
     [super viewDidAppear:animated];
 }
 
@@ -55,27 +56,41 @@
 
 - (IBAction)addPeople:(id)sender {
     // Parsing rpcData to JSON! 
+    
+    if(![usernameTextField.text isEqualToString:@""]) {
         NSMutableDictionary *rpcData = [[NSMutableDictionary alloc] init ];
-    
-    id<RKParser> parser = [[RKParserRegistry sharedRegistry] parserForMIMEType:RKMIMETypeJSON];
-    NSError *error = nil;
-    NSString *json = [parser stringFromObject:rpcData error:&error];
-    
-    //POST json new follower blank parameters
-    [[[RKClient sharedClient] post:[NSString stringWithFormat:@"users/%@/following/user/%@",
-                                [[UGUser sharedInstance] username], [usernameTextField text]]
-                            params:[RKRequestSerialization serializationWithData:[json dataUsingEncoding:NSUTF8StringEncoding] MIMEType:RKMIMETypeJSON]
-                          delegate:self] send];
+        
+        id<RKParser> parser = [[RKParserRegistry sharedRegistry] parserForMIMEType:RKMIMETypeJSON];
+        NSError *error = nil;
+        NSString *json = [parser stringFromObject:rpcData error:&error];
+        
+        //POST json new follower blank parameters
+        [[[RKClient sharedClient] post:[NSString stringWithFormat:@"users/%@/following/user/%@",
+                                        [[UGUser sharedInstance] username], [usernameTextField text]]
+                                params:[RKRequestSerialization serializationWithData:[json dataUsingEncoding:NSUTF8StringEncoding] MIMEType:RKMIMETypeJSON]
+                              delegate:self] send];
+    } else {
+        UIAlertView* alert = [[UIAlertView alloc]
+                              initWithTitle:nil
+                              message:[NSString stringWithFormat:@"People username is required."]
+                              delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];        
+    }
+
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textFieldView {
+    [textFieldView resignFirstResponder];
+    return YES;
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textFieldView {
-    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)];
-    [self.view addGestureRecognizer:gestureRecognizer];
+    //UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)];
+    //[self.view addGestureRecognizer:gestureRecognizer];
 }
 
 - (void)hideKeyboard:(UITapGestureRecognizer *)sender {
-    [self.view removeGestureRecognizer:sender];
-    [usernameTextField resignFirstResponder];
+    //[usernameTextField resignFirstResponder];
 }
 
 
@@ -89,8 +104,14 @@
 
 - (void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response {
     if ((response.isOK)&&(response.isJSON)) {
-        NSLog(@"json: %@", [response parsedBody:nil]);
-        //TODO: Show a success message for following new user        
+        //NSLog(@"json: %@", [response parsedBody:nil]);
+        UIAlertView* alert = [[UIAlertView alloc]
+                              initWithTitle:[NSString stringWithFormat:@"Success"]
+                              message:[NSString stringWithFormat:@"You just start following new people."]
+                              delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        usernameTextField.text = @"";
+        [usernameTextField resignFirstResponder];
     } else {
         RKLogCritical(@"Loading of RKRequest %@ completed with status code %d. Response body: %@", request, response.statusCode, [response bodyAsString]);
     }
