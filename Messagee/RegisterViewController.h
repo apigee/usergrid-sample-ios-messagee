@@ -12,7 +12,15 @@
 #import "UGClient.h"
 
 @interface RegisterViewController : UIViewController <RKRequestDelegate> {
-    
+        UITextField *currentTextField;
+        BOOL keyboardIsShown;
 }
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UITextField *usernameField;
+@property (weak, nonatomic) IBOutlet UITextField *nameField;
+@property (weak, nonatomic) IBOutlet UITextField *emailField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@property (weak, nonatomic) IBOutlet UITextField *password2Field;
 
 @end

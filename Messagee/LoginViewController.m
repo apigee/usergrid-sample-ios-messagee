@@ -88,11 +88,12 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textFieldView {
     currentTextField = textFieldView;
-    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)];
-    [self.view addGestureRecognizer:gestureRecognizer];
+    //UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)];
+    //[self.view addGestureRecognizer:gestureRecognizer];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textFieldView {
+    [textFieldView resignFirstResponder];
     return YES;
 }
 

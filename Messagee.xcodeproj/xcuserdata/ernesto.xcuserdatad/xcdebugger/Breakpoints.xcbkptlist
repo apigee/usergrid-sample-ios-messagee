@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Messagee/LoginViewController.m"
-         timestampString = "351127561.474596"
+         timestampString = "351134500.831038"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "222"
-         endingLineNumber = "222"
+         startingLineNumber = "221"
+         endingLineNumber = "221"
          landmarkName = "@implementation LoginViewController"
          landmarkType = "3">
       </FileBreakpoint>

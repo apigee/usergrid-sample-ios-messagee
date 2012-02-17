@@ -9,6 +9,12 @@
 #import "RegisterViewController.h"
 
 @implementation RegisterViewController
+@synthesize scrollView;
+@synthesize usernameField;
+@synthesize nameField;
+@synthesize emailField;
+@synthesize passwordField;
+@synthesize password2Field;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,42 +52,52 @@
 
 - (void)viewDidUnload
 {
+    [self setUsernameField:nil];
+    [self setNameField:nil];
+    [self setEmailField:nil];
+    [self setPasswordField:nil];
+    [self setPassword2Field:nil];
+    [self setScrollView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
 
 - (IBAction)registerButton:(id)sender {
-    // TODO: Terminate register process 
-    
-    //NSMutableDictionary *rpcData = [[NSMutableDictionary alloc] init ];
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
     [RKClient sharedClient].baseURL = [[UGClient sharedInstance] usergridApiUrl];
     
-    [[RKClient sharedClient] setValue:[NSString stringWithFormat:@"Bearer %@", [[UGClient sharedInstance] clientCredentials]] forHTTPHeaderField:@"Authorization"];
+    // TODO: Validate all fields 
+    if(![nameField.text isEqualToString:@""]) {
+        // There's text in the box.
+    }
     
-    // User Params
-    [params setObject:@"test5" forKey:@"username"];
-    [params setObject:@"Test" forKey:@"name"];
-    [params setObject:@"a@c.com" forKey:@"email"];
-    [params setObject:@"123456" forKey:@"password"];
-    
-    // Post message params
-    //[rpcData setobject:@"test4" forKey:@"username"];
-    //[rpcData setObject:@"Ernesto M" forKey:@"name"];
-    //[rpcData setObject:@"a@b.com" forKey:@"email"];
-    
-    // Parsing rpcData to JSON! 
-    id<RKParser> parser = [[RKParserRegistry sharedRegistry] parserForMIMEType:RKMIMETypeJSON];
-    NSError *error = nil;
-    NSString *json = [parser stringFromObject:params error:&error];    
-    
-    if (!error){
-        [[[RKClient sharedClient] post:@"users"
-                                params:[RKRequestSerialization serializationWithData:[json dataUsingEncoding:NSUTF8StringEncoding] MIMEType:RKMIMETypeJSON]
-                              delegate:self] send];
-    } 
+    if((passwordField.text == passwordField.text)&&(![passwordField.text isEqualToString:@""])) {
+        // User Params
+        [params setObject:[usernameField text] forKey:@"username"];
+        [params setObject:[nameField text] forKey:@"name"];
+        [params setObject:[nameField text] forKey:@"email"];
+        [params setObject:[passwordField text] forKey:@"password"];
+        [params setObject:[password2Field text] forKey:@"password"];
+        
+        // Parsing rpcData to JSON! 
+        id<RKParser> parser = [[RKParserRegistry sharedRegistry] parserForMIMEType:RKMIMETypeJSON];
+        NSError *error = nil;
+        NSString *json = [parser stringFromObject:params error:&error];    
+        
+        if (!error){
+            [[[RKClient sharedClient] post:@"users"
+                                    params:[RKRequestSerialization serializationWithData:[json dataUsingEncoding:NSUTF8StringEncoding] MIMEType:RKMIMETypeJSON]
+                                  delegate:self] send];
+        } 
+    } else {
+        UIAlertView* alert = [[UIAlertView alloc]
+                              initWithTitle:[NSString stringWithFormat:@"Validation Error"]
+                              message:[NSString stringWithFormat:@"Passwords don't match"]
+                              delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 - (IBAction)cancelRegisterButton:(id)sender {
@@ -99,21 +115,17 @@
 
 - (void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response {
     if ([response isSuccessful]) {
-        NSLog(@"User created");
-        [self dismissModalViewControllerAnimated:YES];
-        /*
-        if ([[response parsedBody:nil] objectForKey:@"access_token"]) {
-            //self.clientCredentials = [[response parsedBody:nil] objectForKey:@"access_token"];
-        } else if ([[response parsedBody:nil] objectForKey:@"error"]) {
-            UIAlertView* alert = [[UIAlertView alloc]
-                                  initWithTitle:nil
-                                  message:[[response parsedBody:nil] objectForKey:@"error_description"]
-                                  delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
+        if ([response statusCode]==200) {
+            [self dismissModalViewControllerAnimated:YES];
         }
-         */
+    } else if ([response statusCode]==400) {
+        UIAlertView* alert = [[UIAlertView alloc]
+                              initWithTitle:@"Error"
+                              message:[NSString stringWithFormat:@"%@", [[response parsedBody:nil] objectForKey:@"error_description"]]
+                              delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];            
     } else if ([response isError]) {
-            NSLog(@"response %@", response.bodyAsString);
+        NSLog(@"response %@", response.bodyAsString);
         UIAlertView* alert = [[UIAlertView alloc]
                               initWithTitle:@"Error"
                               message:[NSString stringWithFormat:@"Status code: %d", response.statusCode]
@@ -131,4 +143,73 @@
     [alert show];
 }
 
+
+
+
+// Keyboard stuff
+- (void)viewDidLoad
+{
+    scrollView.frame = CGRectMake(0, 0, 320, 460);
+    [scrollView setContentSize:CGSizeMake(320, 460)];
+    
+    [super viewDidLoad];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:self.view.window];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
+    [super viewWillAppear:animated];
+}
+
+
+- (void)textFieldDidBeginEditing:(UITextField *)textFieldView {
+    currentTextField = textFieldView;
+    //UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)];
+    //[self.view addGestureRecognizer:gestureRecognizer];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textFieldView {
+    [textFieldView resignFirstResponder];
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textFieldView {
+    currentTextField = nil;
+    [textFieldView resignFirstResponder];
+}
+
+- (void)hideKeyboard:(UITapGestureRecognizer *)sender {
+    //[self.view removeGestureRecognizer:sender];
+}
+
+- (void)keyboardDidShow:(NSNotification *) notification {
+    if (keyboardIsShown) return;
+    NSDictionary* info = [notification userInfo];
+    
+    NSValue *aValue = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGRect keyboardRect = [self.view convertRect:[aValue CGRectValue] fromView:nil];
+    
+    CGRect viewFrame = [scrollView frame];
+    viewFrame.size.height -= keyboardRect.size.height;
+    //viewFrame.size.height -= 25;
+    scrollView.frame = viewFrame;
+    
+    CGRect textFieldRect = [currentTextField frame];
+    [scrollView scrollRectToVisible:textFieldRect animated:YES];
+    keyboardIsShown = YES;
+}
+
+- (void)keyboardDidHide:(NSNotification *) notification {
+    NSDictionary* info = [notification userInfo];
+    
+    NSValue* aValue = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGRect keyboardRect = [self.view convertRect:[aValue CGRectValue] fromView:nil];
+    
+    CGRect viewFrame = [scrollView frame];
+    viewFrame.size.height += keyboardRect.size.height;
+    
+    scrollView.frame = viewFrame;
+    keyboardIsShown = NO;
+}
 @end
