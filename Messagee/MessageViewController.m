@@ -12,6 +12,8 @@
 @implementation MessageViewController
 @synthesize scrollView = _scrollView;
 
+NSTimer *timer;
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -32,7 +34,7 @@
 
 - (void)viewDidLoad
 {
-    // When view did load, create table and load message board
+    // When view did load, Map message, create table and load message board
     [super viewDidLoad];
     
     self.scrollView.frame = CGRectMake(0, 0, 320, 460);
@@ -44,9 +46,7 @@
 	_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self.scrollView addSubview:_tableView];
-    [self loadMessageBoard];
-    
-    
+
     // Message Mapping
     RKObjectMapping* actorMapping = [RKObjectMapping mappingForClass:[UGActor class]];
     [actorMapping mapAttributes:@"displayName", @"picture", nil];
@@ -59,8 +59,7 @@
     
     [[RKObjectManager sharedManager].mappingProvider setMapping:messageMapping forKeyPath:@"entities"];
     
-    // Load message board every 5 seconds 
-    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(loadMessageBoard) userInfo:NULL repeats:YES];
+    [self loadMessageBoard];
 }
 
 - (void)viewDidUnload
@@ -78,6 +77,8 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    // Load message board every 5 seconds
+    timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(loadMessageBoard) userInfo:NULL repeats:YES];
     [super viewDidAppear:animated];
 }
 
@@ -88,6 +89,9 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
+    if (timer) {
+        [timer invalidate];
+    }
 	[super viewDidDisappear:animated];
 }
 
