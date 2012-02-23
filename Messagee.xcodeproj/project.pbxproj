@@ -16,6 +16,7 @@
 		94328D4C14E563A200153B08 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94328D4A14E563A200153B08 /* MainStoryboard.storyboard */; };
 		94328D4F14E563A200153B08 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94328D4E14E563A200153B08 /* MessageViewController.m */; };
 		94328D5614E563A200153B08 /* PeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94328D5514E563A200153B08 /* PeopleViewController.m */; };
+		94347D1814F697E30061E6F6 /* ballon.png in Resources */ = {isa = PBXBuildFile; fileRef = 94347D1714F697E30061E6F6 /* ballon.png */; };
 		9448BDA814E9886300689915 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9448BDA714E9886200689915 /* logo@2x.png */; };
 		9448BDAA14E989B300689915 /* register@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9448BDA914E989B300689915 /* register@2x.png */; };
 		9448BDAC14E9909500689915 /* changeServer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9448BDAB14E9909500689915 /* changeServer@2x.png */; };
@@ -28,6 +29,7 @@
 		947A5D7814E860B200B2F426 /* UGUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 947A5D7714E860B200B2F426 /* UGUser.m */; };
 		947A5D7B14E860D500B2F426 /* UGActivitie.m in Sources */ = {isa = PBXBuildFile; fileRef = 947A5D7A14E860D500B2F426 /* UGActivitie.m */; };
 		94871D5214ED906100C4785A /* UGActor.m in Sources */ = {isa = PBXBuildFile; fileRef = 94871D5114ED906100C4785A /* UGActor.m */; };
+		94C263BA14F4554F00B22681 /* messageArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94C263B914F4554F00B22681 /* messageArrow@2x.png */; };
 		94F5F03314E5659100E1ED55 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F5F02914E5650000E1ED55 /* libRestKit.a */; };
 		94F5F03A14E565E600E1ED55 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F5F03414E565E600E1ED55 /* CFNetwork.framework */; };
 		94F5F03B14E565E600E1ED55 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F5F03514E565E600E1ED55 /* CoreData.framework */; };
@@ -110,6 +112,7 @@
 		94328D4E14E563A200153B08 /* MessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		94328D5414E563A200153B08 /* PeopleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PeopleViewController.h; sourceTree = "<group>"; };
 		94328D5514E563A200153B08 /* PeopleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeopleViewController.m; sourceTree = "<group>"; };
+		94347D1714F697E30061E6F6 /* ballon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ballon.png; sourceTree = "<group>"; };
 		9448BDA714E9886200689915 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		9448BDA914E989B300689915 /* register@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register@2x.png"; sourceTree = "<group>"; };
 		9448BDAB14E9909500689915 /* changeServer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "changeServer@2x.png"; sourceTree = "<group>"; };
@@ -127,6 +130,7 @@
 		947A5D7A14E860D500B2F426 /* UGActivitie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGActivitie.m; sourceTree = "<group>"; };
 		94871D5014ED906100C4785A /* UGActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UGActor.h; path = Usergrid/UGActor.h; sourceTree = "<group>"; };
 		94871D5114ED906100C4785A /* UGActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UGActor.m; path = Usergrid/UGActor.m; sourceTree = "<group>"; };
+		94C263B914F4554F00B22681 /* messageArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "messageArrow@2x.png"; path = "../../Apigee/Apigee/images/messageArrow@2x.png"; sourceTree = "<group>"; };
 		94F5F01E14E5650000E1ED55 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		94F5F03414E565E600E1ED55 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		94F5F03514E565E600E1ED55 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -285,8 +289,10 @@
 				94F5F04C14E56D8200E1ED55 /* addPeople@2x.png */,
 				9448BDB714EB242700689915 /* logout@2x.png */,
 				94F5F04D14E56D8200E1ED55 /* Background@2x.png */,
+				94C263B914F4554F00B22681 /* messageArrow@2x.png */,
 				9448BDAF14E99C2900689915 /* usernameField@2x.png */,
 				94F5F04E14E56D8200E1ED55 /* friend.png */,
+				94347D1714F697E30061E6F6 /* ballon.png */,
 				94F5F08E14E57BC700E1ED55 /* loginFields@2x.png */,
 				94F5F04F14E56D8200E1ED55 /* friend@2x.png */,
 				94F5F05214E56D8200E1ED55 /* leftButton@2x.png */,
@@ -418,6 +424,8 @@
 				9448BDAE14E9975300689915 /* serverField.png in Resources */,
 				9448BDB014E99C2900689915 /* usernameField@2x.png in Resources */,
 				9448BDB814EB242800689915 /* logout@2x.png in Resources */,
+				94C263BA14F4554F00B22681 /* messageArrow@2x.png in Resources */,
+				94347D1814F697E30061E6F6 /* ballon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
