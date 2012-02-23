@@ -207,7 +207,7 @@ NSTimer *timer;
     usernameLabel.frame = CGRectMake(70, 25, 230, 10);
 
     balloonView.image = balloon;
-    usernameLabel.text = @"Hola";
+    usernameLabel.text = [[[_statuses objectAtIndex:indexPath.row] actor] displayName];
 	contentLabel.text = text;
     
 	return cell;
