@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		941740CD14F6F55F00F41B22 /* messageArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 941740CC14F6F55F00F41B22 /* messageArrow@2x.png */; };
 		94328D3914E563A100153B08 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94328D3814E563A100153B08 /* UIKit.framework */; };
 		94328D3B14E563A200153B08 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94328D3A14E563A100153B08 /* Foundation.framework */; };
 		94328D3D14E563A200153B08 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94328D3C14E563A200153B08 /* CoreGraphics.framework */; };
@@ -29,7 +30,6 @@
 		947A5D7814E860B200B2F426 /* UGUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 947A5D7714E860B200B2F426 /* UGUser.m */; };
 		947A5D7B14E860D500B2F426 /* UGActivitie.m in Sources */ = {isa = PBXBuildFile; fileRef = 947A5D7A14E860D500B2F426 /* UGActivitie.m */; };
 		94871D5214ED906100C4785A /* UGActor.m in Sources */ = {isa = PBXBuildFile; fileRef = 94871D5114ED906100C4785A /* UGActor.m */; };
-		94C263BA14F4554F00B22681 /* messageArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94C263B914F4554F00B22681 /* messageArrow@2x.png */; };
 		94F5F03314E5659100E1ED55 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F5F02914E5650000E1ED55 /* libRestKit.a */; };
 		94F5F03A14E565E600E1ED55 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F5F03414E565E600E1ED55 /* CFNetwork.framework */; };
 		94F5F03B14E565E600E1ED55 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F5F03514E565E600E1ED55 /* CoreData.framework */; };
@@ -97,6 +97,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		941740CC14F6F55F00F41B22 /* messageArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messageArrow@2x.png"; sourceTree = "<group>"; };
 		94328D3414E563A100153B08 /* Messagee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messagee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94328D3814E563A100153B08 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		94328D3A14E563A100153B08 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -130,7 +131,6 @@
 		947A5D7A14E860D500B2F426 /* UGActivitie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGActivitie.m; sourceTree = "<group>"; };
 		94871D5014ED906100C4785A /* UGActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UGActor.h; path = Usergrid/UGActor.h; sourceTree = "<group>"; };
 		94871D5114ED906100C4785A /* UGActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UGActor.m; path = Usergrid/UGActor.m; sourceTree = "<group>"; };
-		94C263B914F4554F00B22681 /* messageArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "messageArrow@2x.png"; path = "../../Apigee/Apigee/images/messageArrow@2x.png"; sourceTree = "<group>"; };
 		94F5F01E14E5650000E1ED55 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		94F5F03414E565E600E1ED55 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		94F5F03514E565E600E1ED55 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -289,7 +289,7 @@
 				94F5F04C14E56D8200E1ED55 /* addPeople@2x.png */,
 				9448BDB714EB242700689915 /* logout@2x.png */,
 				94F5F04D14E56D8200E1ED55 /* Background@2x.png */,
-				94C263B914F4554F00B22681 /* messageArrow@2x.png */,
+				941740CC14F6F55F00F41B22 /* messageArrow@2x.png */,
 				9448BDAF14E99C2900689915 /* usernameField@2x.png */,
 				94F5F04E14E56D8200E1ED55 /* friend.png */,
 				94347D1714F697E30061E6F6 /* ballon.png */,
@@ -424,8 +424,8 @@
 				9448BDAE14E9975300689915 /* serverField.png in Resources */,
 				9448BDB014E99C2900689915 /* usernameField@2x.png in Resources */,
 				9448BDB814EB242800689915 /* logout@2x.png in Resources */,
-				94C263BA14F4554F00B22681 /* messageArrow@2x.png in Resources */,
 				94347D1814F697E30061E6F6 /* ballon.png in Resources */,
+				941740CD14F6F55F00F41B22 /* messageArrow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
