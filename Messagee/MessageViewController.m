@@ -186,9 +186,9 @@ NSTimer *timer;
         cell.imageView.image = [imagee imageScaledToSize:CGSizeMake(42, 42)];
         
         cell.imageView.layer.masksToBounds = YES;
-        cell.imageView.layer.cornerRadius = 22;
+        cell.imageView.layer.cornerRadius = 4;
         cell.imageView.layer.borderColor = [[UIColor colorWithRed:0.169 green:0.169 blue:0.169 alpha:1] CGColor];
-        cell.imageView.layer.borderWidth = 2;
+        cell.imageView.layer.borderWidth = 1;
 	}
 	else
 	{
