@@ -16,14 +16,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Usergrid default server url
-    [[UGClient sharedInstance] UGClientApiUrl:@"http://api.usergrid.com/Messagee"];//Usergid Server
-    
-    // UsergridKey and UsergidSecret are obtained
-    // from the app settings http://http://apigee.github.com/usergrid-portal-internal/
-    [[UGClient sharedInstance] setUsergridKey:@"YXA6R5duelZ-EeG_tyIAChxaZw"];//Client ID
-    [[UGClient sharedInstance] setUsergridSecret:@"YXA6aa5MWiNeOxgTl2kFy_eBsbpFh44"];//Client Secret
-    
-    [[UGClient sharedInstance] requestClientCredentials];
+    [[UGClient sharedInstance] UGClientApiUrl:@"http://api.usergrid.com/MessageeApp"];//Usergid Server
 
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navigationBar"] forBarMetrics:UIBarMetricsDefault];
     return YES;
