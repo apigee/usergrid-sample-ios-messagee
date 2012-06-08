@@ -16,7 +16,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Usergrid default server url
-    [[UGClient sharedInstance] UGClientApiUrl:@"http://api.usergrid.com/MessageeApp"];//Usergid Server
+    [[UGClient sharedInstance] UGClientApiUrl:@"http://api.usergrid.com/Apigee/MessageeApp"];//Usergid Server
 
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navigationBar"] forBarMetrics:UIBarMetricsDefault];
     return YES;
