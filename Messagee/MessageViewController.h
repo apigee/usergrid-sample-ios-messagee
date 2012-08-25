@@ -15,7 +15,6 @@
 
 @interface MessageViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, RKObjectLoaderDelegate> {
 	UITableView *_tableView;
-	NSArray *_statuses;
 }
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;

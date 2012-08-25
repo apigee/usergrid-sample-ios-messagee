@@ -23,8 +23,14 @@
 }
 @end
 
+@interface MessageViewController()
+@property (nonatomic, strong) NSArray *statuses;
+
+@end
+
 @implementation MessageViewController
 @synthesize scrollView = _scrollView;
+@synthesize statuses;
 
 NSTimer *timer;
 
@@ -116,7 +122,7 @@ NSTimer *timer;
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-    _statuses = objects;
+    self.statuses = objects;
     [_tableView reloadData];
 }
 
@@ -129,14 +135,14 @@ NSTimer *timer;
 #pragma mark UITableViewDelegate methods
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	CGSize size = [[[_statuses objectAtIndex:indexPath.row] content] sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(300, 9000)];
+	CGSize size = [[[self.statuses objectAtIndex:indexPath.row] content] sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(300, 9000)];
 	return size.height + 60;
 }
 
 #pragma mark UITableViewDataSource methods
 
 - (NSInteger)tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section {
-	return [_statuses count];
+	return [self.statuses count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -181,7 +187,7 @@ NSTimer *timer;
         imageView.center = CGPointMake(65, 30);
         [cell.contentView addSubview:imageView];
         
-        NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:[NSString stringWithFormat:@"%@", [[[_statuses objectAtIndex:indexPath.row] actor] picture] ]]];
+        NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:[NSString stringWithFormat:@"%@", [[[self.statuses objectAtIndex:indexPath.row] actor] picture] ]]];
         UIImage *imagee = [UIImage imageWithData:imageData];
         cell.imageView.image = [imagee imageScaledToSize:CGSizeMake(42, 42)];
         
@@ -197,7 +203,7 @@ NSTimer *timer;
 		contentLabel = (UILabel *)[[cell.contentView viewWithTag:0] viewWithTag:2];
 	}
 	
-	NSString *text = [[_statuses objectAtIndex:indexPath.row] content];
+	NSString *text = [[self.statuses objectAtIndex:indexPath.row] content];
 	CGSize size = [text sizeWithFont:[UIFont fontWithName:@"Helvetica" size:12] constrainedToSize:CGSizeMake(230.0f, 480.0f) lineBreakMode:UILineBreakModeWordWrap];
 	
 	UIImage *balloon;
@@ -207,7 +213,7 @@ NSTimer *timer;
     usernameLabel.frame = CGRectMake(70, 25, 230, 10);
 
     balloonView.image = balloon;
-    usernameLabel.text = [[[_statuses objectAtIndex:indexPath.row] actor] displayName];
+    usernameLabel.text = [[[self.statuses objectAtIndex:indexPath.row] actor] displayName];
 	contentLabel.text = text;
     
 	return cell;
