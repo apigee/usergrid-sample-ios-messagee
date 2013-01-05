@@ -17,8 +17,12 @@
     self = [super init];
     if (self) {
         
+        //configure the org and app
+        NSString * orgName = @"Apigee";
+        NSString * appName = @"MessageeApp";
+
         //make new client
-        usergridClient = [[UGClient alloc]initWithOrganizationId: @"/Apigee" withApplicationID:@"/MessageeApp"];
+        usergridClient = [[UGClient alloc]initWithOrganizationId: orgName withApplicationID: appName];
         //[usergridClient setLogging:true];
     }
     return self;

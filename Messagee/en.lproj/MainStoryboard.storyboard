@@ -196,7 +196,7 @@
             </objects>
             <point key="canvasLocation" x="462" y="-482"/>
         </scene>
-        <!--Following View Controller - My Crew-->
+        <!--Following View Controller - Following-->
         <scene sceneID="b5T-0Z-OWs">
             <objects>
                 <viewController storyboardIdentifier="followingView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KF9-zu-s2E" customClass="FollowingViewController" sceneMemberID="viewController">
@@ -282,7 +282,7 @@
                             <constraint firstItem="bhs-ia-vuV" firstAttribute="top" secondItem="Pha-TO-Zb6" secondAttribute="top" type="default" id="yjO-tT-nLa"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="My Crew" image="friend.png" id="jlD-td-XSn"/>
+                    <tabBarItem key="tabBarItem" title="Following" image="friend.png" id="jlD-td-XSn"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kPY-Yb-cLy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -676,7 +676,7 @@
                     <connections>
                         <outlet property="passwordField" destination="3RY-LL-33G" id="leJ-eH-jav"/>
                         <outlet property="usernameField" destination="Luu-KB-bBf" id="Qth-Qu-1M0"/>
-                        <segue destination="JBP-kB-YP6" kind="modal" identifier="loginSeque" id="xVZ-pa-nHp"/>
+                        <segue destination="JBP-kB-YP6" kind="modal" identifier="loginSeque" modalTransitionStyle="flipHorizontal" id="xVZ-pa-nHp"/>
                         <segue destination="ZN3-Ph-lHU" kind="modal" identifier="registerSeque" modalTransitionStyle="flipHorizontal" id="Vlp-dB-3qr"/>
                     </connections>
                 </viewController>
@@ -754,8 +754,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="n8f-X2-nwz"/>
-        <segue reference="0rr-y5-ekR"/>
+        <segue reference="xVZ-pa-nHp"/>
         <segue reference="Qex-qD-cmq"/>
+        <segue reference="0rr-y5-ekR"/>
     </inferredMetricsTieBreakers>
 </document>
