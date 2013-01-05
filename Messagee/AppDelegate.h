@@ -2,12 +2,11 @@
 //  AppDelegate.h
 //  Messagee
 //
-//  Created by Ernesto Vargas on 2/10/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Rod Simpson on 12/27/12.
+//  Copyright (c) 2012 Rod Simpson. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "UGClient.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

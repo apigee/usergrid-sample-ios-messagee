@@ -1,15 +1,15 @@
 //
-//  MessageViewController.h
+//  UsersViewController.h
 //  Messagee
 //
-//  Created by Rod Simpson on 12/29/12.
+//  Created by Rod Simpson on 12/30/12.
 //  Copyright (c) 2012 Rod Simpson. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "Client.h"
 
-@interface MessageViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface FollowingViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 -(void)setClient:(Client *)inclient;
 

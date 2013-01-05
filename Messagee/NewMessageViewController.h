@@ -2,20 +2,20 @@
 //  NewMessageViewController.h
 //  Messagee
 //
-//  Created by Ernesto Vargas on 2/10/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Rod Simpson on 12/28/12.
+//  Copyright (c) 2012 Rod Simpson. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import <RestKit/RestKit.h>
-#import <RestKit/RKRequestSerialization.h>
-#import "UGClient.h"
-#import "UGUser.h"
+#import "Client.h"
 
-@interface NewMessageViewController : UIViewController <RKRequestDelegate> {
-    
-}
+@interface NewMessageViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UITextView *messageTextField;
+-(void)setClient:(Client *)inclient;
+
+- (IBAction)postMessage:(id)sender;
+
+@property (strong, nonatomic) IBOutlet UITextView *messageTextField;
+
 
 @end

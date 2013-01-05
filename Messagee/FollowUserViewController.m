@@ -1,26 +1,29 @@
 //
-//  NewMessageViewController.m
+//  FollowUserViewController.m
 //  Messagee
 //
 //  Created by Rod Simpson on 12/28/12.
 //  Copyright (c) 2012 Rod Simpson. All rights reserved.
 //
 
-#import "NewMessageViewController.h"
+#import "FollowUserViewController.h"
 #import "TabBarController.h"
 
-@interface NewMessageViewController ()
+@interface FollowUserViewController ()
 
 @end
 
-@implementation NewMessageViewController
+@implementation FollowUserViewController
 
-@synthesize messageTextField;
-
+@synthesize usernameField;
 Client *client;
+UIViewController *sender;
 
 -(void)setClient:(Client *)inclient{
     client = inclient;
+}
+-(void)setSender:(UIViewController *)view{
+    sender = view;
 }
 
 
@@ -33,24 +36,17 @@ Client *client;
     return self;
 }
 
-- (void)viewWillAppear:(BOOL)flag {
-    [super viewWillAppear:flag];
-    [messageTextField becomeFirstResponder];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [messageTextField becomeFirstResponder];
+    [usernameField becomeFirstResponder];
 	// Do any additional setup after loading the view.
 }
-- (void)viewDidUnload
-{
-    [self setMessageTextField:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+- (void)viewWillAppear:(BOOL)flag {
+    [super viewWillAppear:flag];
+    [usernameField becomeFirstResponder];
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -58,41 +54,45 @@ Client *client;
     // Dispose of any resources that can be recreated.
 }
 
+
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    
-    [messageTextField resignFirstResponder]; 
-    if ([segue.identifier isEqualToString:@"messagePostedSegue"]){
+
+    [usernameField resignFirstResponder]; 
+    if ([segue.identifier isEqualToString:@"returnToFollowing"]){
         TabBarController *dvc = [segue destinationViewController];
         [dvc setClient:client];
+        [dvc setNextViewToFollowing];
     }
     
 }
 
-- (IBAction)postMessage:(id)sender {
- 
+- (IBAction)followButton:(id)sender {
+
     NSString * errorTitle;
     NSString * errorMesssage;
-    if (![[messageTextField text] isEqualToString:@""]) {
+    if (![[usernameField text] isEqualToString:@""]) {
         
-        if ([client postMessage:[messageTextField text]]) {
+        if ([client followUser:[usernameField text]]) {
             //invoke segue back to message list
-            return [self performSegueWithIdentifier:@"messagePostedSegue" sender:self];
+            return [self performSegueWithIdentifier:@"returnToFollowing" sender:self];
         } else {
             errorTitle = @"Oops!";
-            errorMesssage = @"There was a problem posting the message - please try again.";
+            errorMesssage = @"There was a problem following that user - check the username!";
         }
         
     } else {
         errorTitle = @"Oops!";
-        errorMesssage = @"The message was empty.";
+        errorMesssage = @"The user field was empty.";
     }
-
+    
     UIAlertView* alert = [[UIAlertView alloc]
                           initWithTitle:errorTitle
                           message:errorMesssage
                           delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
-
-
+    
+    
 }
+
+
 @end

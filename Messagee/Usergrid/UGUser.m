@@ -1,26 +1,18 @@
 //
 //  UGUser.m
-//  Messagee
+//  testproject1
 //
-//  Created by Ernesto Vargas on 2/12/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Donica Patel on 3/2/12.
+//  Copyright (c) 2012 Apigee Corporation. All rights reserved.
 //
 
 #import "UGUser.h"
 
 @implementation UGUser
 
-@synthesize username = _username;
-@synthesize email = _email;
-@synthesize picture = _picture;
-
-+ (UGUser *)sharedInstance
-{
-    static UGUser *myInstance = nil;
-    if (nil == myInstance) {
-        myInstance  = [[[self class] alloc] init];
-    }
-    return myInstance;
-}
+@synthesize username;
+@synthesize email;
+@synthesize uuid;
+@synthesize picture;
 
 @end

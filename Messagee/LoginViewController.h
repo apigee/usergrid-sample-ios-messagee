@@ -2,23 +2,19 @@
 //  LoginViewController.h
 //  Messagee
 //
-//  Created by Ernesto Vargas on 2/10/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Rod Simpson on 12/27/12.
+//  Copyright (c) 2012 Rod Simpson. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import <RestKit/RestKit.h> 
-#import "UGUser.h"
 
-@interface LoginViewController : UIViewController <RKRequestDelegate, RKObjectLoaderDelegate> {
-    UITextField *currentTextField;
-    UIButton *loginButton;
-    BOOL keyboardIsShown;
-    NSArray* _access;
-}
+@interface LoginViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet UITextField *usernameField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordField;
+
+
+- (IBAction)registerButton:(id)sender;
+- (IBAction)loginButton:(id)sender;
 
 @end

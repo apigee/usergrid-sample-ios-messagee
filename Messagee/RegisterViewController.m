@@ -2,11 +2,15 @@
 //  RegisterViewController.m
 //  Messagee
 //
-//  Created by Ernesto Vargas on 2/13/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Rod Simpson on 12/28/12.
+//  Copyright (c) 2012 Rod Simpson. All rights reserved.
 //
 
 #import "RegisterViewController.h"
+
+@interface RegisterViewController ()
+
+@end
 
 @implementation RegisterViewController
 @synthesize scrollView;
@@ -14,7 +18,10 @@
 @synthesize nameField;
 @synthesize emailField;
 @synthesize passwordField;
-@synthesize password2Field;
+@synthesize rePasswordField;
+
+Client *client;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -25,152 +32,23 @@
     return self;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
-#pragma mark - View lifecycle
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
-}
-*/
-
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-*/
-
-- (void)viewDidUnload
-{
-    [self setUsernameField:nil];
-    [self setNameField:nil];
-    [self setEmailField:nil];
-    [self setPasswordField:nil];
-    [self setPassword2Field:nil];
-    [self setScrollView:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
--(BOOL)validateEmail:(NSString *)checkString
-{
-    BOOL stricterFilter = YES;
-    NSString *stricterFilterString = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
-    NSString *laxString = @".+@.+\\.[A-Za-z]{2}[A-Za-z]*";
-    NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
-    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
-    return [emailTest evaluateWithObject:checkString];
-}
-
-
-- (IBAction)registerButton:(id)sender {
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    
-    [RKClient sharedClient].baseURL = [[UGClient sharedInstance] usergridApiUrl];
-    
-    // TODO: Validate all fields 
-    if(![nameField.text isEqualToString:@""]) {
-        // There's text in the box.
-    }
-    
-    if (![self validateEmail:[emailField text]]) {
-        UIAlertView* alert = [[UIAlertView alloc]
-                              initWithTitle:[NSString stringWithFormat:@"Validation Error"]
-                              message:[NSString stringWithFormat:@"Email is incorrect"]
-                              delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-    }
-    
-    if((passwordField.text == passwordField.text)&&(![passwordField.text isEqualToString:@""])) {
-        // User Params
-        [params setObject:[usernameField text] forKey:@"username"];
-        [params setObject:[nameField text] forKey:@"name"];
-        [params setObject:[emailField text] forKey:@"email"];
-        [params setObject:[passwordField text] forKey:@"password"];
-        [params setObject:[password2Field text] forKey:@"password"];
-        
-        // Parsing rpcData to JSON! 
-        id<RKParser> parser = [[RKParserRegistry sharedRegistry] parserForMIMEType:RKMIMETypeJSON];
-        NSError *error = nil;
-        NSString *json = [parser stringFromObject:params error:&error];    
-        
-        if (!error){
-            [[[RKClient sharedClient] post:@"users"
-                                    params:[RKRequestSerialization serializationWithData:[json dataUsingEncoding:NSUTF8StringEncoding] MIMEType:RKMIMETypeJSON]
-                                  delegate:self] send];
-        } 
-    } else {
-        UIAlertView* alert = [[UIAlertView alloc]
-                              initWithTitle:[NSString stringWithFormat:@"Validation Error"]
-                              message:[NSString stringWithFormat:@"Passwords don't match"]
-                              delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-    }
-}
-
-- (IBAction)cancelRegisterButton:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
-}
-
-
-- (void)requestDidStartLoad:(RKRequest *)request {
-    
-}
-
-- (void)request:(RKRequest *)request didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
-    //NSLog(@"Request did send body data");
-}
-
-- (void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response {
-    if ([response isSuccessful]) {
-        if ([response statusCode]==200) {
-            [self dismissModalViewControllerAnimated:YES];
-        }
-    } else if ([response statusCode]==400) {
-        UIAlertView* alert = [[UIAlertView alloc]
-                              initWithTitle:@"Error"
-                              message:[NSString stringWithFormat:@"%@", [[response parsedBody:nil] objectForKey:@"error_description"]]
-                              delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];            
-    } else if ([response isError]) {
-        NSLog(@"response %@", response.bodyAsString);
-        UIAlertView* alert = [[UIAlertView alloc]
-                              initWithTitle:@"Error"
-                              message:[NSString stringWithFormat:@"Status code: %d", response.statusCode]
-                              delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-    }
-}
-
-- (void)request:(RKRequest *)request didFailLoadWithError:(NSError *)error {
-    NSLog(@"Did Fail Load with error %@", error);
-    UIAlertView* alert = [[UIAlertView alloc]
-                          initWithTitle:[NSString stringWithFormat:@"Error %d", error.code]
-                          message:[NSString stringWithFormat:@"%@", error]
-                          delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
-}
-
-
-
-// Keyboard stuff
 - (void)viewDidLoad
 {
     scrollView.frame = CGRectMake(0, 0, 320, 460);
     [scrollView setContentSize:CGSizeMake(320, 460)];
     
     [super viewDidLoad];
+	// Do any additional setup after loading the view.
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+-(void)setClient:(Client *)inclient{
+    client = inclient;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -180,12 +58,17 @@
     [super viewWillAppear:animated];
 }
 
-
 - (void)textFieldDidBeginEditing:(UITextField *)textFieldView {
     currentTextField = textFieldView;
-    //UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)];
-    //[self.view addGestureRecognizer:gestureRecognizer];
+
+    //scrollView.contentOffset = CGPointMake(50,30);
+  //  CGPoint point = textFieldView.frame.origin ;
+    //point.x += 30;
+    //point.y += 30;
+    //scrollView.contentOffset = point;
+    
 }
+
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textFieldView {
     [textFieldView resignFirstResponder];
@@ -230,4 +113,31 @@
     scrollView.frame = viewFrame;
     keyboardIsShown = NO;
 }
+
+- (IBAction)registerButton:(id)sender {
+    //get the username and password from the text fields
+    NSString *username = [usernameField text];
+    NSString *name = [nameField text];
+    NSString *email = [emailField text];
+    NSString *password = [passwordField text];
+    NSString *rePassword = [rePasswordField text];
+    
+    if (![password isEqualToString:rePassword]) {
+        //pop an alert saying the login failed
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Password error." message:@"The passwords do not match?" delegate:self cancelButtonTitle:@"Try Again" otherButtonTitles:nil];
+        [alert show];
+    } else {
+        if ([client createUser:username
+                      withName:name
+                     withEmail:email
+                  withPassword:password]){
+            [self performSegueWithIdentifier:@"regsiterSuccessSeque" sender:client];
+        } else {
+            //pop an alert saying the login failed
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Account not created?" message:@"Did you type your username and password correctly?" delegate:self cancelButtonTitle:@"Try Again" otherButtonTitles:nil];
+            [alert show];
+        }
+    }
+}
+
 @end

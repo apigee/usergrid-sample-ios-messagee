@@ -1,13 +1,14 @@
 //
-//  FirstViewController.m
+//  MessageViewController.m
 //  Messagee
 //
-//  Created by Ernesto Vargas on 2/10/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Rod Simpson on 12/29/12.
+//  Copyright (c) 2012 Rod Simpson. All rights reserved.
 //
 
 #import "MessageViewController.h"
-
+#import "NewMessageViewController.h"
+#include <QuartzCore/QuartzCore.h>
 
 @interface UIImage (TPAdditions)
 - (UIImage*)imageScaledToSize:(CGSize)size;
@@ -23,141 +24,111 @@
 }
 @end
 
-@interface MessageViewController()
-@property (nonatomic, strong) NSArray *statuses;
+
+@interface MessageViewController ()
 
 @end
 
 @implementation MessageViewController
-@synthesize scrollView = _scrollView;
-@synthesize statuses;
 
-NSTimer *timer;
 
-- (void)didReceiveMemoryWarning
+
+Client *client;
+NSArray *messages;
+
+
+-(void)setClient:(Client *)inclient{
+    client = inclient;
+}
+
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
 }
-
-#pragma mark - View lifecycle
-
-- (void)loadMessageBoard {
-    // Request user feed
-    // GET feed from users/<username>/feed?limit=30
-    [[RKObjectManager sharedManager]
-     loadObjectsAtResourcePath:[NSString stringWithFormat:@"user/%@/feed?limit=30",
-                                [[UGUser sharedInstance] username]]
-     delegate:self];
-}
-
 
 - (void)viewDidLoad
 {
-    // When view did load, Map message, create table and load message board
     [super viewDidLoad];
+	
+    messages = [client getMessages];
     
-    self.scrollView.frame = CGRectMake(0, 0, 320, 460);
-    
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 45, 320, 480-64) style:UITableViewStylePlain];
-	_tableView.dataSource = self;
-	_tableView.delegate = self;		
-	_tableView.backgroundColor = [UIColor clearColor];
-	_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-    [self.scrollView addSubview:_tableView];
-
-    // Message Mapping
-    RKObjectMapping* actorMapping = [RKObjectMapping mappingForClass:[UGActor class]];
-    [actorMapping mapAttributes:@"displayName", @"picture", nil];
-    
-    RKObjectMapping* messageMapping = [RKObjectMapping mappingForClass:[UGActivitie class]];
-    [messageMapping mapKeyPath:@"content" toAttribute:@"content"];
-    [messageMapping mapKeyPath:@"type" toAttribute:@"type"];
-    
-    [messageMapping mapKeyPath:@"actor" toRelationship:@"actor" withMapping:actorMapping];
-    
-    [[RKObjectManager sharedManager].mappingProvider setMapping:messageMapping forKeyPath:@"entities"];
-    
-    [self loadMessageBoard];
 }
 
-- (void)viewDidUnload
-{
-    [self setScrollView:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    // Load message board every 5 seconds
-    timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(loadMessageBoard) userInfo:NULL repeats:YES];
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-	[super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    if (timer) {
-        [timer invalidate];
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    if ([segue.identifier isEqualToString:@"newFollowingSegue"]){
+        NewMessageViewController *dvc = [segue destinationViewController];
+        [dvc setClient:client];
     }
-	[super viewDidDisappear:animated];
-}
-
-#pragma mark RKObjectLoaderDelegate methods
-
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
-    //NSLog(@"* Did load response: %@", [response bodyAsString]);
-}
-
-- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-    self.statuses = objects;
-    [_tableView reloadData];
-}
-
-- (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error {
-	NSLog(@"**Object loader did fail with Error: %@", error);
+    
 }
 
 
 
-#pragma mark UITableViewDelegate methods
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return [messages count];
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	CGSize size = [[[self.statuses objectAtIndex:indexPath.row] content] sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(300, 9000)];
+    NSDictionary *post = [messages objectAtIndex:indexPath.row];
+    //main message
+    NSString *message = [post objectForKey:@"content"];
+    
+	CGSize size = [message sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(300, 9000)];
 	return size.height + 60;
 }
 
-#pragma mark UITableViewDataSource methods
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *post = [messages objectAtIndex:indexPath.row];
+    //main message
+    NSString *userMessage = [post objectForKey:@"content"];
+    
+    //subtitle
+    NSDictionary *actor = [post objectForKey:@"actor"];
+    NSString *username = [actor objectForKey:@"username"];
+    
+    //user image
+    NSString *picture = [actor objectForKey:@"picture"];
+    NSURL *pictureURL = [NSURL URLWithString:picture];
+    
+    UIImage *userImage;
+    if (pictureURL && pictureURL.scheme && pictureURL.host) {
+        NSData *imageData = [[NSData alloc] initWithContentsOfURL: pictureURL];
+        userImage = [UIImage imageWithData:imageData];
+    } else {
+        NSString *imageFile = [[NSBundle mainBundle] pathForResource:@"user_profile" ofType:@"png"];
+        userImage = [[UIImage alloc] initWithContentsOfFile:imageFile];
+    }
+    
 
-- (NSInteger)tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section {
-	return [self.statuses count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSString* reuseIdentifier = @"Cell Identifier";
-	UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+    static NSString *CellIdentifier = @"messageCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     UIImageView *balloonView;
 	UILabel *contentLabel;
     UILabel *usernameLabel;
-    
-	if (nil == cell) {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
-        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;		
+	if (nil == cell) {
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 		
 		balloonView = [[UIImageView alloc] initWithFrame:CGRectZero];
 		balloonView.tag = 1;
@@ -172,9 +143,9 @@ NSTimer *timer;
 		contentLabel.backgroundColor = [UIColor clearColor];
 		contentLabel.tag = 2;
 		contentLabel.numberOfLines = 0;
-		contentLabel.lineBreakMode = UILineBreakModeWordWrap;
+		contentLabel.lineBreakMode = NSLineBreakByWordWrapping;
 		contentLabel.font = [UIFont systemFontOfSize:14.0];
-        
+
         
 		UIView *message = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, cell.frame.size.width, cell.frame.size.height)];
 		message.tag = 0;
@@ -183,18 +154,18 @@ NSTimer *timer;
 		[message addSubview:contentLabel];
 		[cell.contentView addSubview:message];
 		
+        
         UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"messageArrow"]];
         imageView.center = CGPointMake(65, 30);
         [cell.contentView addSubview:imageView];
         
-        NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:[NSString stringWithFormat:@"%@", [[[self.statuses objectAtIndex:indexPath.row] actor] picture] ]]];
-        UIImage *imagee = [UIImage imageWithData:imageData];
-        cell.imageView.image = [imagee imageScaledToSize:CGSizeMake(42, 42)];
         
+        cell.imageView.image = [userImage imageScaledToSize:CGSizeMake(42, 42)];
         cell.imageView.layer.masksToBounds = YES;
         cell.imageView.layer.cornerRadius = 4;
         cell.imageView.layer.borderColor = [[UIColor colorWithRed:0.169 green:0.169 blue:0.169 alpha:1] CGColor];
         cell.imageView.layer.borderWidth = 1;
+   
 	}
 	else
 	{
@@ -203,20 +174,45 @@ NSTimer *timer;
 		contentLabel = (UILabel *)[[cell.contentView viewWithTag:0] viewWithTag:2];
 	}
 	
-	NSString *text = [[self.statuses objectAtIndex:indexPath.row] content];
-	CGSize size = [text sizeWithFont:[UIFont fontWithName:@"Helvetica" size:12] constrainedToSize:CGSizeMake(230.0f, 480.0f) lineBreakMode:UILineBreakModeWordWrap];
+	//NSString *text = [[self.statuses objectAtIndex:indexPath.row] content];
+	CGSize size = [userMessage sizeWithFont:[UIFont fontWithName:@"Helvetica" size:12] constrainedToSize:CGSizeMake(230.0f, 480.0f) lineBreakMode:NSLineBreakByWordWrapping];
 	
 	UIImage *balloon;
     balloonView.frame = CGRectMake(65, 15, 230, size.height + 55);
     balloon = [[UIImage imageNamed:@"ballon.png"] stretchableImageWithLeftCapWidth:24 topCapHeight:15];
     contentLabel.frame = CGRectMake(70, 35, 210, size.height + 30);
     usernameLabel.frame = CGRectMake(70, 25, 230, 10);
-
-    balloonView.image = balloon;
-    usernameLabel.text = [[[self.statuses objectAtIndex:indexPath.row] actor] displayName];
-	contentLabel.text = text;
     
-	return cell;
+    balloonView.image = balloon;
+    usernameLabel.text = username;
+	contentLabel.text = userMessage;
+    
+    
+    
+    
+    
+    
+    return cell;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 @end
