@@ -46,7 +46,7 @@
                                             <constraint firstAttribute="height" constant="44" id="cto-tb-akI"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES"/>
                                         <connections>
                                             <outlet property="delegate" destination="ZN3-Ph-lHU" id="AAO-Bg-Vc7"/>
                                         </connections>
@@ -56,7 +56,7 @@
                                             <constraint firstAttribute="height" constant="44" id="M7n-9e-sDu"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                         <connections>
                                             <outlet property="delegate" destination="ZN3-Ph-lHU" id="EaD-cp-ED3"/>
                                         </connections>
@@ -601,14 +601,20 @@
                                     <constraint firstAttribute="width" constant="254" id="iDM-Dv-JAT"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="dGT-ii-DFw" id="NzS-Uh-c8E"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3RY-LL-33G">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="EBd-UR-8Ix"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="dGT-ii-DFw" id="Ufe-fN-iDz"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mv9-2m-PFz">
                                 <constraints>
@@ -755,7 +761,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="xVZ-pa-nHp"/>
-        <segue reference="Qex-qD-cmq"/>
+        <segue reference="6nK-jg-3hL"/>
         <segue reference="0rr-y5-ekR"/>
     </inferredMetricsTieBreakers>
 </document>

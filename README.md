@@ -89,7 +89,7 @@ Once you have set up your new users, navigate to this file:
 And locate these lines on around line 20:
 
 	//configure the org and app
-	NSString * orgName = @"Apigee";
+	NSString * orgName = @"ApigeeOrg";
 	NSString * appName = @"MessageeApp";
 
 Change the org name to the one you signed up with (usually your username) and change the app name to the one you are using (e.g. Sandbox).  For example, if your org name is "myorgname" and you are using the sandbox, your code should look like this:
@@ -98,7 +98,7 @@ Change the org name to the one you signed up with (usually your username) and ch
 	NSString * orgName = @"myorgname";
 	NSString * appName = @"sandbox";
 
-**Note:** Org and App names are case insensitive.
+**Note:** Org and App names are not case sensitive.
 
 Now you should be able to run the app again and log in with any of the new users you just created.  Try posting messages and having your users follow each other (just enter another user's username on the "Follow User" screen.
 

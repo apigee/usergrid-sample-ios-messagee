@@ -11,8 +11,6 @@
 #import "TabBarController.h"
 #import "Client.h"
 
-
-
 @interface LoginViewController ()
 
 @end
@@ -52,14 +50,16 @@ Client *client;
     
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textFieldView {
+    [textFieldView resignFirstResponder];
+    return YES;
+}
+
 - (IBAction)loginButton:(id)sender {
 
     //get the username and password from the text fields
     NSString *username = [_usernameField text];
     NSString *password = [_passwordField text];
-    
-    username = @"myuser";
-    password = @"mypass";
     
     if ([client login:username withPassword:password]){
         [self performSegueWithIdentifier:@"loginSeque" sender:self];

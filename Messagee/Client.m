@@ -18,17 +18,21 @@
     if (self) {
         
         //configure the org and app
-        NSString * orgName = @"Apigee";
+        NSString * orgName = @"ApigeeOrg";
         NSString * appName = @"MessageeApp";
 
         //make new client
         usergridClient = [[UGClient alloc]initWithOrganizationId: orgName withApplicationID: appName];
-        //[usergridClient setLogging:true];
+        //[usergridClient setLogging:true]; //uncomment to see debug output in console window
     }
     return self;
 }
 
 -(bool)login:(NSString*)username withPassword:(NSString*)password {
+    
+    //uncomment the below for easy testing (just click login)
+    //username = @"myuser";
+    //password = @"mypass";
     
     //then log the user in
     //UGClientResponse *response =
@@ -48,9 +52,12 @@
         withEmail:(NSString*)email
      withPassword:(NSString*)password{
 
-    [usergridClient addUser:username email:email name:name password:password];
     
-    return [self login:username withPassword:password];
+    UGClientResponse *response = [usergridClient addUser:username email:email name:name password:password];
+    if (response.transactionState == 0) {
+        return [self login:username withPassword:password];
+    }
+    return false;
 }
 
 -(NSArray*)getFollowing {
@@ -67,11 +74,12 @@
 
 -(bool)followUser:(NSString*)username{
     
-    UGClientResponse *response = [usergridClient connectEntities:@"users"
-                                                connectorID:@"me"
-                                                connectionType:@"following"
-                                                connecteeType:@"users"
-                                                connecteeID:username];
+    UGClientResponse *response =
+        [usergridClient connectEntities:@"users"
+                        connectorID:@"me"
+                        connectionType:@"following"
+                        connecteeType:@"users"
+                        connecteeID:username];
     
     if (response.transactionState == 0) {
         return true;
@@ -87,7 +95,7 @@
     
     UGQuery *query = [[UGQuery alloc] init];
     [query addURLTerm:@"limit" equals:@"30"];
-    UGClientResponse *response = [usergridClient getActivitiesForUser:username query:query];
+    UGClientResponse *response = [usergridClient getActivityFeedForUser:username query:query];
     
     NSArray *messages = [response.response objectForKey:@"entities"];
 
@@ -118,7 +126,7 @@
         "lat" : 48.856614,
         "lon" : 2.352222
      }
-     */
+    */
     
     NSMutableDictionary *activity = [[NSMutableDictionary alloc] init ];
     NSMutableDictionary *actor = [[NSMutableDictionary alloc] init];
@@ -127,7 +135,7 @@
     NSString *email = [user email];
     NSString *uuid = [user uuid];
     NSString *picture = [user picture];
-    NSString *lat = @"48.856614";
+    NSString *lat = @"48.856614"; //todo: get coords from the phone
     NSString *lon = @"2.352222f";
     
     // actor

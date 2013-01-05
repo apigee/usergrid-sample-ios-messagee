@@ -174,12 +174,11 @@ NSArray *messages;
 		contentLabel = (UILabel *)[[cell.contentView viewWithTag:0] viewWithTag:2];
 	}
 	
-	//NSString *text = [[self.statuses objectAtIndex:indexPath.row] content];
-	CGSize size = [userMessage sizeWithFont:[UIFont fontWithName:@"Helvetica" size:12] constrainedToSize:CGSizeMake(230.0f, 480.0f) lineBreakMode:NSLineBreakByWordWrapping];
+	CGSize size = [userMessage sizeWithFont:[UIFont fontWithName:@"Helvetica" size:11] constrainedToSize:CGSizeMake(230.0f, 480.0f) lineBreakMode:NSLineBreakByWordWrapping];
 	
 	UIImage *balloon;
-    balloonView.frame = CGRectMake(65, 15, 230, size.height + 55);
-    balloon = [[UIImage imageNamed:@"ballon.png"] stretchableImageWithLeftCapWidth:24 topCapHeight:15];
+    balloonView.frame = CGRectMake(65, 15, 230, size.height + 50);
+    balloon = [[UIImage imageNamed:@"ballon.png"] stretchableImageWithLeftCapWidth:14 topCapHeight:15];
     contentLabel.frame = CGRectMake(70, 35, 210, size.height + 30);
     usernameLabel.frame = CGRectMake(70, 25, 230, 10);
     

@@ -33,10 +33,7 @@ Client *client;
 }
 
 - (void)viewDidLoad
-{
-    scrollView.frame = CGRectMake(0, 0, 320, 460);
-    [scrollView setContentSize:CGSizeMake(320, 460)];
-    
+{    
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
@@ -60,15 +57,7 @@ Client *client;
 
 - (void)textFieldDidBeginEditing:(UITextField *)textFieldView {
     currentTextField = textFieldView;
-
-    //scrollView.contentOffset = CGPointMake(50,30);
-  //  CGPoint point = textFieldView.frame.origin ;
-    //point.x += 30;
-    //point.y += 30;
-    //scrollView.contentOffset = point;
-    
 }
-
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textFieldView {
     [textFieldView resignFirstResponder];
@@ -78,10 +67,6 @@ Client *client;
 - (void)textFieldDidEndEditing:(UITextField *)textFieldView {
     currentTextField = nil;
     [textFieldView resignFirstResponder];
-}
-
-- (void)hideKeyboard:(UITapGestureRecognizer *)sender {
-    //[self.view removeGestureRecognizer:sender];
 }
 
 - (void)keyboardDidShow:(NSNotification *) notification {
