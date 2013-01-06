@@ -9,7 +9,7 @@
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
 #import "TabBarController.h"
-#import "Client.h"
+
 
 @interface LoginViewController ()
 
@@ -17,18 +17,18 @@
 
 @implementation LoginViewController
 
-Client *client;
+@synthesize clientObj;
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
    
     if ([segue.identifier isEqualToString:@"loginSeque"]){
         TabBarController *dvc = [segue destinationViewController];
-        [dvc setClient:client];
+        [dvc setClient:clientObj];
     }
     
     if ([segue.identifier isEqualToString:@"registerSeque"]){
         RegisterViewController *dvc = [segue destinationViewController];
-        [dvc setClient:client];
+        [dvc setClient:clientObj];
     }
 
 }
@@ -36,7 +36,7 @@ Client *client;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    client = [[Client alloc] init];
+    clientObj = [[Client alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,7 +46,7 @@ Client *client;
 }
 
 - (IBAction)registerButton:(id)sender {
-    [self performSegueWithIdentifier:@"registerSeque" sender:client];
+    [self performSegueWithIdentifier:@"registerSeque" sender:clientObj];
     
 }
 
@@ -61,7 +61,7 @@ Client *client;
     NSString *username = [_usernameField text];
     NSString *password = [_passwordField text];
     
-    if ([client login:username withPassword:password]){
+    if ([clientObj login:username withPassword:password]){
         [self performSegueWithIdentifier:@"loginSeque" sender:self];
     } else {
         //pop an alert saying the login failed

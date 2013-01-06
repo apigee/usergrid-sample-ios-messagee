@@ -12,6 +12,7 @@
 @interface TabBarController : UITabBarController
 
 @property NSString *selectedView;
+@property Client *clientObj;
 
 - (void)setClient:(Client *)inclient;
 - (void)setNextViewToFollowing;

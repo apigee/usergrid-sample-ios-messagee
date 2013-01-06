@@ -17,10 +17,10 @@
 
 @synthesize messageTextField;
 
-Client *client;
+@synthesize clientObj;
 
 -(void)setClient:(Client *)inclient{
-    client = inclient;
+    clientObj = inclient;
 }
 
 
@@ -63,7 +63,7 @@ Client *client;
     [messageTextField resignFirstResponder]; 
     if ([segue.identifier isEqualToString:@"messagePostedSegue"]){
         TabBarController *dvc = [segue destinationViewController];
-        [dvc setClient:client];
+        [dvc setClient:clientObj];
     }
     
 }
@@ -74,7 +74,7 @@ Client *client;
     NSString * errorMesssage;
     if (![[messageTextField text] isEqualToString:@""]) {
         
-        if ([client postMessage:[messageTextField text]]) {
+        if ([clientObj postMessage:[messageTextField text]]) {
             //invoke segue back to message list
             return [self performSegueWithIdentifier:@"messagePostedSegue" sender:self];
         } else {

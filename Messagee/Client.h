@@ -15,8 +15,6 @@
 @property UGClient *usergridClient;
 @property UGUser *user;
 @property NSString *currentView;
-//@property const int MESSAGES_VIEW;
-//@property const int USERS_VIEW;
 
 -(bool)login:(NSString*)username
         withPassword:(NSString*)password;

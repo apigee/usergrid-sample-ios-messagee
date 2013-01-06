@@ -16,6 +16,7 @@
 @implementation TabBarController
 
 @synthesize selectedView;
+@synthesize clientObj;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,11 +44,11 @@
 }
 
 - (void)setClient:(Client *)inclient {
-    //self.client = inclient;
-    Client * client = inclient;
     
-    [[[self viewControllers] objectAtIndex:0] setClient: client];
-    [[[self viewControllers] objectAtIndex:1] setClient: client];
+    clientObj = inclient;
+    
+    [[[self viewControllers] objectAtIndex:0] setClient: clientObj];
+    [[[self viewControllers] objectAtIndex:1] setClient: clientObj];
 
 }
 

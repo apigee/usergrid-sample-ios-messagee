@@ -11,10 +11,10 @@
 
 @interface FollowUserViewController : UIViewController
 
--(void)setClient:(Client *)inclient;
--(void)setSender:(UIViewController *)view;
-
-- (IBAction)followButton:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
+@property Client * clientObj;
+
+-(void)setClient:(Client *)inclient;
+- (IBAction)followButton:(id)sender;
 
 @end

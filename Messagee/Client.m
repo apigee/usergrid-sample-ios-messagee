@@ -66,9 +66,9 @@
     [query addURLTerm:@"limit" equals:@"30"];
     UGClientResponse *response = [usergridClient getEntityConnections: @"users" connectorID:@"me" connectionType:@"following" query:query];
 
-    NSArray * followers = [response.response objectForKey:@"entities"];
+    NSArray * following = [response.response objectForKey:@"entities"];
 
-    return followers;
+    return following;
     
 }
 
@@ -159,28 +159,6 @@
     }
     return false;
 }
-
-
-
-/*
- //and then send the user to the location section
- UIViewController *locationController = [[LocationViewController alloc] initWithGameState: gstate];
- //self.modalPresentationStyle = UIModalTransitionStyleFlipHorizontal;
- [self presentViewController:locationController animated:YES completion:nil];
- */
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 @end

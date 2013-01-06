@@ -33,12 +33,12 @@
 
 
 
-Client *client;
+@synthesize clientObj;
 NSArray *messages;
 
 
 -(void)setClient:(Client *)inclient{
-    client = inclient;
+    clientObj = inclient;
 }
 
 
@@ -55,22 +55,24 @@ NSArray *messages;
 {
     [super viewDidLoad];
 	
-    messages = [client getMessages];
+    messages = [clientObj getMessages];
     
 }
 
-
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
-    if ([segue.identifier isEqualToString:@"newFollowingSegue"]){
+    if ([segue.identifier isEqualToString:@"newMessageSegue"]){
         NewMessageViewController *dvc = [segue destinationViewController];
-        [dvc setClient:client];
+        [dvc setClient:clientObj];
     }
     
 }
-
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -186,32 +188,7 @@ NSArray *messages;
     usernameLabel.text = username;
 	contentLabel.text = userMessage;
     
-    
-    
-    
-    
-    
     return cell;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

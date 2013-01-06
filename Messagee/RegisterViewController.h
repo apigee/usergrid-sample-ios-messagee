@@ -14,10 +14,8 @@
     BOOL keyboardIsShown;
 }
 
-@property (strong, nonatomic) Client *client;
-
+@property Client *clientObj;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *emailField;

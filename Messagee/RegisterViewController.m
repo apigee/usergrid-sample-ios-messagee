@@ -7,20 +7,21 @@
 //
 
 #import "RegisterViewController.h"
+#import "TabBarController.h"
 
 @interface RegisterViewController ()
 
 @end
 
 @implementation RegisterViewController
+
 @synthesize scrollView;
 @synthesize usernameField;
 @synthesize nameField;
 @synthesize emailField;
 @synthesize passwordField;
 @synthesize rePasswordField;
-
-Client *client;
+@synthesize clientObj;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -45,7 +46,7 @@ Client *client;
 }
 
 -(void)setClient:(Client *)inclient{
-    client = inclient;
+    clientObj = inclient;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -78,7 +79,6 @@ Client *client;
     
     CGRect viewFrame = [scrollView frame];
     viewFrame.size.height -= keyboardRect.size.height;
-    //viewFrame.size.height -= 25;
     scrollView.frame = viewFrame;
     
     CGRect textFieldRect = [currentTextField frame];
@@ -99,6 +99,15 @@ Client *client;
     keyboardIsShown = NO;
 }
 
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    if ([segue.identifier isEqualToString:@"regsiterSuccessSeque"]){
+        TabBarController *dvc = [segue destinationViewController];
+        [dvc setClient:clientObj];
+    }
+    
+}
+
 - (IBAction)registerButton:(id)sender {
     //get the username and password from the text fields
     NSString *username = [usernameField text];
@@ -112,11 +121,11 @@ Client *client;
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Password error." message:@"The passwords do not match?" delegate:self cancelButtonTitle:@"Try Again" otherButtonTitles:nil];
         [alert show];
     } else {
-        if ([client createUser:username
+        if ([clientObj createUser:username
                       withName:name
                      withEmail:email
                   withPassword:password]){
-            [self performSegueWithIdentifier:@"regsiterSuccessSeque" sender:client];
+            [self performSegueWithIdentifier:@"regsiterSuccessSeque" sender:clientObj];
         } else {
             //pop an alert saying the login failed
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Account not created?" message:@"Did you type your username and password correctly?" delegate:self cancelButtonTitle:@"Try Again" otherButtonTitles:nil];

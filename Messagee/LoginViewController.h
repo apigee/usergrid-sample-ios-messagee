@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Client.h"
 
 @interface LoginViewController : UIViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
-
+@property Client *clientObj;
 
 - (IBAction)registerButton:(id)sender;
 - (IBAction)loginButton:(id)sender;

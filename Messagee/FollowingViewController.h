@@ -11,6 +11,8 @@
 
 @interface FollowingViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property Client *clientObj;
+
 -(void)setClient:(Client *)inclient;
 
 @end
