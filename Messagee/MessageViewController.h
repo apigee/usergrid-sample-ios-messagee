@@ -11,7 +11,7 @@
 
 @interface MessageViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property Client *clientObj;
+@property (nonatomic, strong) Client *clientObj;
 
 -(void)setClient:(Client *)inclient;
 

@@ -10,7 +10,7 @@
 
 @implementation Client
 
-@synthesize usergridClient, user, currentView;
+@synthesize usergridClient, user;
 
 - (id)init
 {

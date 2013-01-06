@@ -13,7 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
-@property Client *clientObj;
+@property (nonatomic, strong) Client *clientObj;
 
 - (IBAction)registerButton:(id)sender;
 - (IBAction)loginButton:(id)sender;

@@ -12,9 +12,8 @@
 
 @interface Client : NSObject
 
-@property UGClient *usergridClient;
-@property UGUser *user;
-@property NSString *currentView;
+@property (nonatomic, strong) UGClient *usergridClient;
+@property (nonatomic, strong) UGUser *user;
 
 -(bool)login:(NSString*)username
         withPassword:(NSString*)password;
