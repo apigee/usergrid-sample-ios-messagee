@@ -17,18 +17,27 @@
 
 @implementation LoginViewController
 
-@synthesize clientObj;
+@synthesize client = _client;
+
+
+- (void)setClient:(Client *)c {
+    _client = c;
+}
+
+- (Client *)client {
+    return _client;
+}
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
    
     if ([segue.identifier isEqualToString:@"loginSeque"]){
         TabBarController *dvc = [segue destinationViewController];
-        [dvc setClient:clientObj];
+        [dvc setClient:_client];
     }
     
     if ([segue.identifier isEqualToString:@"registerSeque"]){
         RegisterViewController *dvc = [segue destinationViewController];
-        [dvc setClient:clientObj];
+        [dvc setClient:_client];
     }
 
 }
@@ -36,7 +45,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    clientObj = [[Client alloc] init];
+    _client = [[Client alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,7 +55,7 @@
 }
 
 - (IBAction)registerButton:(id)sender {
-    [self performSegueWithIdentifier:@"registerSeque" sender:clientObj];
+    [self performSegueWithIdentifier:@"registerSeque" sender:_client];
     
 }
 
@@ -61,7 +70,7 @@
     NSString *username = [_usernameField text];
     NSString *password = [_passwordField text];
     
-    if ([clientObj login:username withPassword:password]){
+    if ([_client login:username withPassword:password]){
         [self performSegueWithIdentifier:@"loginSeque" sender:self];
     } else {
         //pop an alert saying the login failed

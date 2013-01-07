@@ -12,9 +12,8 @@
 @interface FollowUserViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
-@property (nonatomic, strong) Client * clientObj;
+@property (nonatomic, strong) Client * client;
 
--(void)setClient:(Client *)inclient;
 - (IBAction)followButton:(id)sender;
 
 @end

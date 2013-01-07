@@ -11,8 +11,6 @@
 
 @interface FollowingViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) Client *clientObj;
-
--(void)setClient:(Client *)inclient;
+@property (nonatomic, strong) Client *client;
 
 @end

@@ -15,14 +15,23 @@
 
 @implementation RegisterViewController
 
+@synthesize currentTextField;
+@synthesize keyboardIsShown;
 @synthesize scrollView;
 @synthesize usernameField;
 @synthesize nameField;
 @synthesize emailField;
 @synthesize passwordField;
 @synthesize rePasswordField;
-@synthesize clientObj;
+@synthesize client = _client;
 
+- (void)setClient:(Client *)c {
+    _client = c;
+}
+
+- (Client *)client {
+    return _client;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,10 +52,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
--(void)setClient:(Client *)inclient{
-    clientObj = inclient;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -103,7 +108,7 @@
     
     if ([segue.identifier isEqualToString:@"regsiterSuccessSeque"]){
         TabBarController *dvc = [segue destinationViewController];
-        [dvc setClient:clientObj];
+        [dvc setClient:_client];
     }
     
 }
@@ -121,11 +126,11 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Password error." message:@"The passwords do not match?" delegate:self cancelButtonTitle:@"Try Again" otherButtonTitles:nil];
         [alert show];
     } else {
-        if ([clientObj createUser:username
+        if ([_client createUser:username
                       withName:name
                      withEmail:email
                   withPassword:password]){
-            [self performSegueWithIdentifier:@"regsiterSuccessSeque" sender:clientObj];
+            [self performSegueWithIdentifier:@"regsiterSuccessSeque" sender:_client];
         } else {
             //pop an alert saying the login failed
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Account not created?" message:@"Did you type your username and password correctly?" delegate:self cancelButtonTitle:@"Try Again" otherButtonTitles:nil];

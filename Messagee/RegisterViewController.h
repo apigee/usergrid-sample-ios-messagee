@@ -9,12 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "Client.h"
 
-@interface RegisterViewController : UIViewController <UITextFieldDelegate>{
-    UITextField *currentTextField;
-    BOOL keyboardIsShown;
-}
+@interface RegisterViewController : UIViewController <UITextFieldDelegate>
 
-@property (nonatomic, strong) Client *clientObj;
+@property (nonatomic, strong) Client *client;
+@property (nonatomic, strong) UITextField *currentTextField;
+@property BOOL keyboardIsShown;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
@@ -22,8 +21,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UITextField *rePasswordField;
 
-
 - (IBAction)registerButton:(id)sender;
-- (void)setClient:(Client *)inclient;
 
 @end

@@ -16,7 +16,17 @@
 @implementation TabBarController
 
 @synthesize selectedView;
-@synthesize clientObj;
+@synthesize client = _client;
+
+- (void)setClient:(Client *)c {
+    _client = c;
+    [[[self viewControllers] objectAtIndex:0] setClient: _client];
+    [[[self viewControllers] objectAtIndex:1] setClient: _client];
+}
+
+- (Client *)client {
+    return _client;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,14 +53,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setClient:(Client *)inclient {
-    
-    clientObj = inclient;
-    
-    [[[self viewControllers] objectAtIndex:0] setClient: clientObj];
-    [[[self viewControllers] objectAtIndex:1] setClient: clientObj];
-
-}
 
 - (void)setNextViewToFollowing {
     selectedView = @"FOLLOWING"; 

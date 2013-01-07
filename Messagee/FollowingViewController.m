@@ -26,13 +26,18 @@
 
 @implementation FollowingViewController
 
-@synthesize clientObj;
+@synthesize client = _client;
+
+- (void)setClient:(Client *)c {
+    _client = c;
+}
+
+- (Client *)client {
+    return _client;
+}
 
 NSArray *following;
 
--(void)setClient:(Client *)inclient{
-    clientObj = inclient;
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,7 +52,7 @@ NSArray *following;
 {
     [super viewDidLoad];
 	
-    following = [clientObj getFollowing];
+    following = [_client getFollowing];
     ((UITabBarController *) self.parentViewController).tabBar.hidden
     = NO;
     
@@ -57,7 +62,7 @@ NSArray *following;
     
     if ([segue.identifier isEqualToString:@"followUserSegue"]){
         FollowUserViewController *dvc = [segue destinationViewController];
-        [dvc setClient:clientObj];
+        [dvc setClient:_client];
     }
     
 }

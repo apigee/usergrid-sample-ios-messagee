@@ -12,9 +12,8 @@
 @interface TabBarController : UITabBarController
 
 @property (nonatomic, strong) NSString *selectedView;
-@property (nonatomic, strong) Client *clientObj;
+@property (nonatomic, strong) Client *client;
 
-- (void)setClient:(Client *)inclient;
 - (void)setNextViewToFollowing;
 
 @end

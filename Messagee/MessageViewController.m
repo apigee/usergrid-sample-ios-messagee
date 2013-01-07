@@ -32,15 +32,18 @@
 @implementation MessageViewController
 
 
-
-@synthesize clientObj;
 NSArray *messages;
 
+@synthesize client = _client;
 
--(void)setClient:(Client *)inclient{
-    clientObj = inclient;
+
+- (void)setClient:(Client *)c {
+    _client = c;
 }
 
+- (Client *)client {
+    return _client;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -55,7 +58,7 @@ NSArray *messages;
 {
     [super viewDidLoad];
 	
-    messages = [clientObj getMessages];
+    messages = [_client getMessages];
     
 }
 
@@ -69,7 +72,7 @@ NSArray *messages;
     
     if ([segue.identifier isEqualToString:@"newMessageSegue"]){
         NewMessageViewController *dvc = [segue destinationViewController];
-        [dvc setClient:clientObj];
+        [dvc setClient:_client];
     }
     
 }

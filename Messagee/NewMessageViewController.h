@@ -12,9 +12,8 @@
 @interface NewMessageViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UITextView *messageTextField;
-@property (nonatomic, strong) Client *clientObj;
+@property (nonatomic, strong) Client *client;
 
--(void)setClient:(Client *)inclient;
 - (IBAction)postMessage:(id)sender;
 
 @end

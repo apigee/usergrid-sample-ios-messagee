@@ -16,12 +16,16 @@
 @implementation FollowUserViewController
 
 @synthesize usernameField;
-@synthesize clientObj;
+@synthesize client = _client;
 
 UIViewController *sender;
 
--(void)setClient:(Client *)inclient{
-    clientObj = inclient;
+- (void)setClient:(Client *)c {
+    _client = c;
+}
+
+- (Client *)client {
+    return _client;
 }
 
 
@@ -59,7 +63,7 @@ UIViewController *sender;
     [usernameField resignFirstResponder]; 
     if ([segue.identifier isEqualToString:@"returnToFollowing"]){
         TabBarController *dvc = [segue destinationViewController];
-        [dvc setClient:clientObj];
+        [dvc setClient:_client];
         [dvc setNextViewToFollowing];
     }
     
@@ -71,7 +75,7 @@ UIViewController *sender;
     NSString * errorMesssage;
     if (![[usernameField text] isEqualToString:@""]) {
         
-        if ([clientObj followUser:[usernameField text]]) {
+        if ([_client followUser:[usernameField text]]) {
             //invoke segue back to message list
             return [self performSegueWithIdentifier:@"returnToFollowing" sender:self];
         } else {
